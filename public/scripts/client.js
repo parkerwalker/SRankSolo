@@ -7,6 +7,7 @@ app.controller('MainController', function(SearchService){
 
   vm.summonerSearch = {};
   vm.recentMatchData = [];
+  vm.specificMatchPlayers = [];
 
   vm.summonerInput = function(){
     var summonerName = vm.summonerName;
@@ -26,7 +27,19 @@ app.controller('MainController', function(SearchService){
   };//end searchinput
 
 vm.specificMatchCall = function(index){
-  console.log('looking for ', vm.recentMatchData[index]);
-}
+  var gameId = vm.recentMatchData[index].gameId;
+  console.log('looking for gameId', gameId);
+  SearchService.specificMatch(gameId).then(function(response){
+    vm.specificMatchData = response;
+    for (var i = 0; i < vm.specificMatchData.participantIdentities.length; i++) {
+      players = {
+        summonerName: vm.specificMatchData.participantIdentities[i].player.summonerName
+      }
+      vm.specificMatchPlayers.push(players);
+    }
+    console.log(vm.specificMatchData);
+    console.log(vm.specificMatchPlayers);
+  });//end searchservice.specificMatch
+};//end specificMatchCall
 
 });//end controller
