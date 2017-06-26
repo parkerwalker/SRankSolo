@@ -18,18 +18,15 @@ app.controller('MainController', function(SearchService){
 
       var accountId = vm.summonerSearch.accountId;
       SearchService.searchMatch(accountId).then(function(returnData){
-        console.log('match', returnData);
         vm.recentMatchData = returnData.matches;
-        for (var i = 0; i < vm.recentMatchData.length; i++) {
-          SearchService.specificMatch(vm.recentMatchData[i].gameId).then(function(response){
-            console.log('specificMatch', response);
-          });//end then
-        };//end for
+        console.log(vm.recentMatchData);
 
       });//end searchservice.searchmatch call
     });//end searchservice.searchSummoner call
-
-
   };//end searchinput
+
+vm.specificMatchCall = function(index){
+  console.log('looking for ', vm.recentMatchData[index]);
+}
 
 });//end controller
