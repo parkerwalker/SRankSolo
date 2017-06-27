@@ -7,7 +7,6 @@ app.controller('MainController', function(SearchService){
 
   vm.summonerSearch = {};
   vm.recentMatchData = [];
-  vm.specificMatchPlayers = [];
 
   vm.summonerInput = function(){
     var summonerName = vm.summonerName;
@@ -20,6 +19,9 @@ app.controller('MainController', function(SearchService){
       var accountId = vm.summonerSearch.accountId;
       SearchService.searchMatch(accountId).then(function(returnData){
         vm.recentMatchData = returnData.matches;
+        for (var i = 0; i < vm.recentMatchData.length; i++) {
+          vm.recentMatchData[i].specificMatchPlayers = [];
+        }
         console.log(vm.recentMatchData);
 
       });//end searchservice.searchmatch call
@@ -32,13 +34,21 @@ vm.specificMatchCall = function(index){
   SearchService.specificMatch(gameId).then(function(response){
     vm.specificMatchData = response;
     for (var i = 0; i < vm.specificMatchData.participantIdentities.length; i++) {
-      players = {
-        summonerName: vm.specificMatchData.participantIdentities[i].player.summonerName
-      }
-      vm.specificMatchPlayers.push(players);
-    }
+
+      if (vm.specificMatchData.participantIdentities[i].player == null || vm.specificMatchData.participantIdentities[i].player == 0){
+        players = {
+          summonerName: 'Unavalable'
+        }
+      }else{
+        players = {
+          summonerName: vm.specificMatchData.participantIdentities[i].player.summonerName
+        }
+      }//end else
+
+      vm.recentMatchData[index].specificMatchPlayers.push(players);
+    }//end for loop
+
     console.log(vm.specificMatchData);
-    console.log(vm.specificMatchPlayers);
   });//end searchservice.specificMatch
 };//end specificMatchCall
 

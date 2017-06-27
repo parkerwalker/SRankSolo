@@ -15,13 +15,19 @@
     <input ng-model='mc.summonerName' type="text" name="" value="">
     <button ng-click='mc.summonerInput()'>search</button>
 
-    <div class="">
+    <div class="matchList">
       <div ng-repeat='match in mc.recentMatchData' class="">
-        <button ng-click='mc.specificMatchCall($index)'></button>
         <h2>{{match.champion}}</h2>
         <h3>{{match.lane}}</h3>
+        <button ng-click='mc.specificMatchCall($index)'>See more info</button>
+        <hr>
+        <div ng-repeat='players in match.specificMatchPlayers' class="">
+          <h5>{{players.summonerName}}</h5>
+        </div>
         <hr>
       </div>
+
+
     </div>
 
 
