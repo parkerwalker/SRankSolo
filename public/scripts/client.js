@@ -7,7 +7,8 @@ app.controller('MainController', function(SearchService){
 
   vm.summonerSearch = {};
   vm.recentMatchData = [];
-  vm.championMastery= [];
+  vm.championMastery = [];
+
 
   vm.summonerInput = function(){
     vm.summonerSearch = {};
@@ -33,7 +34,7 @@ app.controller('MainController', function(SearchService){
       SearchService.searchMatch(accountId).then(function(returnData){
         vm.recentMatchData = returnData.matches;
         for (var i = 0; i < vm.recentMatchData.length; i++) {
-          vm.recentMatchData[i].specificMatchPlayers = [];//this sets aside an empty array to file with specificMatchCall data
+          vm.recentMatchData[i].specificMatchTeams = [];//this sets aside an empty array to file with specificMatchCall data
         }//end for loop
         console.log(vm.recentMatchData);
 
@@ -41,42 +42,42 @@ app.controller('MainController', function(SearchService){
     });//end searchservice.searchSummoner call
   };//end searchinput
 
-vm.specificMatchCall = function(index){
-  var gameId = vm.recentMatchData[index].gameId;
-  console.log('looking for gameId', gameId);
-  SearchService.specificMatch(gameId).then(function(response){
-    vm.specificMatchData = response;
-    for (var i = 0; i < vm.specificMatchData.participantIdentities.length; i++) {
+  vm.specificMatchCall = function(index){
+    var gameId = vm.recentMatchData[index].gameId;
+    console.log('looking for gameId', gameId);
+    SearchService.specificMatch(gameId).then(function(response){
+      vm.specificMatchData = response;
+      for (var i = 0; i < vm.specificMatchData.participantIdentities.length; i++) {
 
-      if (vm.specificMatchData.participantIdentities[i].player == null || vm.specificMatchData.participantIdentities[i].player == 0){
-        players = {
-          id: i + 1,
-          summonerName: 'Unavalable',
-          champion: vm.specificMatchData.participants[i].championId,
-          kills: vm.specificMatchData.participants[i].stats.kills,
-          deaths: vm.specificMatchData.participants[i].stats.deaths,
-          assists: vm.specificMatchData.participants[i].stats.assists,
-          win: vm.specificMatchData.participants[i].stats.win,
-          rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
-        }
-      }else{
-        players = {
-          id: vm.specificMatchData.participantIdentities[i].player.participantId,
-          summonerName: vm.specificMatchData.participantIdentities[i].player.summonerName,
-          champion: vm.specificMatchData.participants[i].championId,
-          kills: vm.specificMatchData.participants[i].stats.kills,
-          deaths: vm.specificMatchData.participants[i].stats.deaths,
-          assists: vm.specificMatchData.participants[i].stats.assists,
-          win: vm.specificMatchData.participants[i].stats.win,
-          rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
-        }
-      }//end else
+        if (vm.specificMatchData.participantIdentities[i].player == null || vm.specificMatchData.participantIdentities[i].player == 0){
+          players = {
+            id: i + 1,
+            summonerName: 'Unavalable',
+            champion: vm.specificMatchData.participants[i].championId,
+            kills: vm.specificMatchData.participants[i].stats.kills,
+            deaths: vm.specificMatchData.participants[i].stats.deaths,
+            assists: vm.specificMatchData.participants[i].stats.assists,
+            win: vm.specificMatchData.participants[i].stats.win,
+            rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
+          }
+        }else{
+          players = {
+            id: vm.specificMatchData.participantIdentities[i].player.participantId,
+            summonerName: vm.specificMatchData.participantIdentities[i].player.summonerName,
+            champion: vm.specificMatchData.participants[i].championId,
+            kills: vm.specificMatchData.participants[i].stats.kills,
+            deaths: vm.specificMatchData.participants[i].stats.deaths,
+            assists: vm.specificMatchData.participants[i].stats.assists,
+            win: vm.specificMatchData.participants[i].stats.win,
+            rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
+          }
+        }//end else
 
-      vm.recentMatchData[index].specificMatchPlayers.push(players);
-    }//end for loop
+        vm.recentMatchData[index].specificMatchTeams.push(players);
+      }//end for loop
 
-    console.log(vm.specificMatchData, players);
-  });//end searchservice.specificMatch
-};//end specificMatchCall
+      console.log(vm.specificMatchData, players);
+    });//end searchservice.specificMatch
+  };//end specificMatchCall
 
 });//end controller
