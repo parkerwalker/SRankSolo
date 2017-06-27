@@ -1,3 +1,29 @@
+.jumbotron{
+  padding-left: 10%;
+}
+
 .matchList{
   max-width: 60%;
+}
+
+.championMastery{
+  padding-left:  5%;
+  max-width: 40%;
+  min-width: 30%;
+  float: right;
+}
+.container {
+  margin-left: 10%;
+}
+
+.win {
+background: blue;
+width: 50%;
+height: 20%;
+}
+
+.loss {
+  background: red;
+  width: 50%;
+  height: 20%;
 }
