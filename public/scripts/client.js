@@ -80,4 +80,22 @@ app.controller('MainController', function(SearchService){
     });//end searchservice.specificMatch
   };//end specificMatchCall
 
+  vm.currentGameCall = function(){
+    var summonerId = vm.summonerSearch.id;
+    console.log(vm.summonerSearch.id);
+    SearchService.currentGame(summonerId).then(function(data){
+      vm.oneCurrentGameTeam = [];
+      vm.twoCurrentGameTeam = [];
+      console.log(data);
+
+      for (var i = 0; i < data.participants.length; i++) {
+        if (data.participants[i].teamId === 100){
+        console.log('on team 100', data.participants[i].teamId );
+      }else{
+        console.log('on team 200', data.participants[i].teamId);
+      }
+    }//end loop
+    });//end searchservice.currentGame
+  };//end currentGameCall
+
 });//end controller

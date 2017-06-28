@@ -13,7 +13,7 @@
 <body ng-app='app'>
   <div ng-controller='MainController as mc' class="">
   <header class='jumbotron'>
-    <h1>stuff</h1>
+    <h1>Title</h1>
     <input ng-model='mc.summonerName' type="text" name="" value="">
     <button ng-click='mc.summonerInput()'>search</button>
   </header>
@@ -21,6 +21,10 @@
   <div class="container">
     <div class="SummonerInfo">
       <h2>{{mc.summonerSearch.name}}</h2>
+    </div>
+
+    <div class="">
+      <button ng-click='mc.currentGameCall()' type="button">Current Game</button>
     </div>
 
     <div class="championMastery">
