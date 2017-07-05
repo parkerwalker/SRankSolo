@@ -41,14 +41,14 @@
 
 
         <div class='win'>
-          <div ng-repeat='team in match[0]' class='winplayer'>
-            <p>{{team.summonerName}} {{players.champion}}</p>
+          <div ng-repeat='players in match.specificMatchTeams.winning' class='winplayer'>
+            <p>{{player.summonerName}} {{player.champion}}</p>
             <p>{{players.kills}}/{{players.deaths}}/{{players.assists}}</p>
           </div>
         </div>
 
         <div class='loss'>
-          <div ng-repeat='players in match[1]' class='lossplayer'>
+          <div ng-repeat='players in match.specificMatchTeams.losing' class='lossplayer'>
             <p>{{players.summonerName}} {{players.champion}}</p>
             <p>{{players.kills}}/{{players.deaths}}/{{players.assists}}</p>
           </div>

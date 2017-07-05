@@ -48,7 +48,7 @@ app.controller('MainController', function(SearchService){
       SearchService.searchMatch(accountId).then(function(returnData){
         vm.recentMatchData = returnData.matches;
         for (var i = 0; i < vm.recentMatchData.length; i++) {
-          vm.recentMatchData[i].specificMatchTeams = [];//this sets aside an empty array to file with specificMatchCall data
+          vm.recentMatchData[i].specificMatchTeams = {winning: [], losing: []};//this sets aside an empty array to file with specificMatchCall data
         }//end for loop
         console.log(vm.recentMatchData);
 
@@ -118,12 +118,14 @@ app.controller('MainController', function(SearchService){
             }//end else
             losingTeam.push(players);
           }//end losing else
-
+          vm.recentMatchData[i].specificMatchTeams.winning = winningTeam;
+          vm.recentMatchData[i].specificMatchTeams.losing = losingTeam;
         }//end for loop
       }//end if array empty
 
-      vm.recentMatchData[index].specificMatchTeams.push(winningTeam, losingTeam);
-      console.log(vm.recentMatchData[index].specificMatchTeams);
+
+      console.log(vm.recentMatchData[0].specificMatchTeams.winning);
+
     });//end searchservice.specificMatch
   };//end specificMatchCall
 
