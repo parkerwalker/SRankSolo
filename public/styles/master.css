@@ -27,3 +27,11 @@ height: 20%;
   width: 50%;
   height: 20%;
 }
+
+.teamOne {
+  background: purple;
+}
+
+.teamTwo {
+  background: blue;
+}

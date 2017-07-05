@@ -1,6 +1,20 @@
 console.log('js');
 
-var app = angular.module('app', []);
+var app = angular.module('app', ['ngRoute']);
+
+app.config(function($routeProvider){
+  $routeProvider.when('/notes', {
+    templateUrl: 'views/partials/notes.html',
+    controller: 'MainController as mc'
+  }).when('/login', {
+    templateUrl: 'views/partials/login.html',
+    controller: 'MainController as mc'
+  }).when('/display', {
+  templateUrl: 'views/partials/display.html',
+  controller: 'MainController',
+  controllerAs: 'MainController as mc'
+  })
+});//end config
 
 app.controller('MainController', function(SearchService){
   var vm = this;
@@ -47,36 +61,69 @@ app.controller('MainController', function(SearchService){
     console.log('looking for gameId', gameId);
     SearchService.specificMatch(gameId).then(function(response){
       vm.specificMatchData = response;
-      for (var i = 0; i < vm.specificMatchData.participantIdentities.length; i++) {
+      var winningTeam = [];
+      var losingTeam = [];
+      if (winningTeam.length === 0) {
+        for (var i = 0; i < vm.specificMatchData.participantIdentities.length; i++) {
+          vm.recentMatchData[i].specificMatchTeams = []
+          if (vm.specificMatchData.participants[i].stats.win) {
+            if (vm.specificMatchData.participantIdentities[i].player == null || vm.specificMatchData.participantIdentities[i].player == 0){
+              players = {
+                id: i + 1,
+                summonerName: 'Unavalable',
+                champion: vm.specificMatchData.participants[i].championId,
+                kills: vm.specificMatchData.participants[i].stats.kills,
+                deaths: vm.specificMatchData.participants[i].stats.deaths,
+                assists: vm.specificMatchData.participants[i].stats.assists,
+                win: vm.specificMatchData.participants[i].stats.win,
+                rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
+              }//end object
+            }else{
+              players = {
+                id: vm.specificMatchData.participantIdentities[i].participantId,
+                summonerName: vm.specificMatchData.participantIdentities[i].player.summonerName,
+                champion: vm.specificMatchData.participants[i].championId,
+                kills: vm.specificMatchData.participants[i].stats.kills,
+                deaths: vm.specificMatchData.participants[i].stats.deaths,
+                assists: vm.specificMatchData.participants[i].stats.assists,
+                win: vm.specificMatchData.participants[i].stats.win,
+                rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
+              }//end object
+            }//end else
+            winningTeam.push(players);
+          }//end win if
+          else{
+            if (vm.specificMatchData.participantIdentities[i].player == null || vm.specificMatchData.participantIdentities[i].player == 0){
+              players = {
+                id: i + 1,
+                summonerName: 'Unavalable',
+                champion: vm.specificMatchData.participants[i].championId,
+                kills: vm.specificMatchData.participants[i].stats.kills,
+                deaths: vm.specificMatchData.participants[i].stats.deaths,
+                assists: vm.specificMatchData.participants[i].stats.assists,
+                win: vm.specificMatchData.participants[i].stats.win,
+                rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
+              }//end object
+            }else{
+              players = {
+                id: vm.specificMatchData.participantIdentities[i].participantId,
+                summonerName: vm.specificMatchData.participantIdentities[i].player.summonerName,
+                champion: vm.specificMatchData.participants[i].championId,
+                kills: vm.specificMatchData.participants[i].stats.kills,
+                deaths: vm.specificMatchData.participants[i].stats.deaths,
+                assists: vm.specificMatchData.participants[i].stats.assists,
+                win: vm.specificMatchData.participants[i].stats.win,
+                rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
+              }//end object
+            }//end else
+            losingTeam.push(players);
+          }//end losing else
 
-        if (vm.specificMatchData.participantIdentities[i].player == null || vm.specificMatchData.participantIdentities[i].player == 0){
-          players = {
-            id: i + 1,
-            summonerName: 'Unavalable',
-            champion: vm.specificMatchData.participants[i].championId,
-            kills: vm.specificMatchData.participants[i].stats.kills,
-            deaths: vm.specificMatchData.participants[i].stats.deaths,
-            assists: vm.specificMatchData.participants[i].stats.assists,
-            win: vm.specificMatchData.participants[i].stats.win,
-            rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
-          }
-        }else{
-          players = {
-            id: vm.specificMatchData.participantIdentities[i].player.participantId,
-            summonerName: vm.specificMatchData.participantIdentities[i].player.summonerName,
-            champion: vm.specificMatchData.participants[i].championId,
-            kills: vm.specificMatchData.participants[i].stats.kills,
-            deaths: vm.specificMatchData.participants[i].stats.deaths,
-            assists: vm.specificMatchData.participants[i].stats.assists,
-            win: vm.specificMatchData.participants[i].stats.win,
-            rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
-          }
-        }//end else
+        }//end for loop
+      }//end if array empty
 
-        vm.recentMatchData[index].specificMatchTeams.push(players);
-      }//end for loop
-
-      console.log(vm.specificMatchData, players);
+      vm.recentMatchData[index].specificMatchTeams.push(winningTeam, losingTeam);
+      console.log(vm.recentMatchData[index].specificMatchTeams);
     });//end searchservice.specificMatch
   };//end specificMatchCall
 
@@ -90,11 +137,21 @@ app.controller('MainController', function(SearchService){
 
       for (var i = 0; i < data.participants.length; i++) {
         if (data.participants[i].teamId === 100){
-        console.log('on team 100', data.participants[i].teamId );
-      }else{
-        console.log('on team 200', data.participants[i].teamId);
-      }
-    }//end loop
+          playerOne = {
+            name: data.participants[i].summonerName,
+            champion: data.participants[i].championId
+          }
+          vm.oneCurrentGameTeam.push(playerOne);
+        }else{
+          playerTwo = {
+            name: data.participants[i].summonerName,
+            champion: data.participants[i].championId
+          }
+          vm.twoCurrentGameTeam.push(playerTwo);
+        }//end else
+
+      }//end loop
+      console.log(vm.oneCurrentGameTeam, vm.twoCurrentGameTeam);
     });//end searchservice.currentGame
   };//end currentGameCall
 

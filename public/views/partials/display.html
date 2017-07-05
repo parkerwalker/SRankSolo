@@ -1,0 +1,63 @@
+
+
+<div class="container">
+  <div class="SummonerInfo">
+    <h2>{{mc.summonerSearch.name}}</h2>
+  </div>
+  <div class="">
+    <button ng-click='mc.currentGameCall()' type="button">Current Game</button>
+    <div class="currentGame">
+      <div class="teamOne">
+        <div ng-repeat='players in mc.oneCurrentGameTeam' class="">
+          <p>{{players.name}}</p>
+        </div>
+      </div>
+      <div class="teamTwo">
+        <div ng-repeat='players in mc.twoCurrentGameTeam' class="">
+          <p>{{players.name}}</p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="championMastery">
+    <div ng-repeat='champs in mc.championMastery' class="">
+      <img ng-src="../images/champIcons/{{champs.championId}}.png" alt="">
+      <h3>{{champs.championLevel}}</h3>
+    </div>
+  </div>
+
+  <div class="matchList">
+    <div ng-repeat='match in mc.recentMatchData' class="">
+      <hr>
+      <img ng-src="../images/champIcons/{{match.champion}}.png" alt="">
+      <h3>{{match.lane}}</h3>
+      <button ng-click='mc.specificMatchCall($index)'>See more info</button>
+      <hr>
+
+      <div class="oneMatch">
+
+
+        <div class='win'>
+          <div ng-repeat='team in match[0]' class='winplayer'>
+            <p>{{team.summonerName}} {{players.champion}}</p>
+            <p>{{players.kills}}/{{players.deaths}}/{{players.assists}}</p>
+          </div>
+        </div>
+
+        <div class='loss'>
+          <div ng-repeat='players in match[1]' class='lossplayer'>
+            <p>{{players.summonerName}} {{players.champion}}</p>
+            <p>{{players.kills}}/{{players.deaths}}/{{players.assists}}</p>
+          </div>
+        </div>
+
+
+
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>

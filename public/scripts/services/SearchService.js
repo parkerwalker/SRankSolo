@@ -7,8 +7,8 @@ app.service('SearchService', function($http){
     ss.currentUrl = 'https://na1.api.riotgames.com/lol/spectator/v3/active-games/by-summoner/' + summonerId + '?api_key=RGAPI-a29e06a2-b330-4bdb-adaf-82e3ba71c924'
     return $http.get(ss.currentUrl).then(function(response){
       return response.data;
-    })
-  }
+    });//end http
+  };//end ss.currentGame
 
   ss.searchSummoner = function(url){
     return $http.get(url).then(function(response){
