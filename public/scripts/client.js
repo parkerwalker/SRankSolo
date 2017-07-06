@@ -5,7 +5,7 @@ var app = angular.module('app', ['ngRoute']);
 app.config(function($routeProvider){
   $routeProvider.when('/notes', {
     templateUrl: 'views/partials/notes.html',
-    controller: 'MainController as mc'
+    controller: 'NotesController as nc'
   }).when('/login', {
     templateUrl: 'views/partials/login.html',
     controller: 'LoginController as lc'

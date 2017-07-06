@@ -15,7 +15,7 @@
 }
 
 .matchIcon {
-  width: 15%;
+  width: 10%;
   float: bottom;
 }
 
@@ -28,12 +28,18 @@
 
 }
 
+.matchTable {
+  width: 100%;
+}
+
 .champIcon {
   height: 30px;
 }
 
 .moreInfo {
   float: right;
+  position: relative;
+  bottom: 0;
 }
 
 .win {
@@ -51,15 +57,21 @@ td {
   padding-left: 10px;
 
 }
+
+.addNotes {
+  float: right;
+  max-width: 10%;
+}
+
 .won{
   background: #639fff;
   float: right;
-  width: 50%;
+  width: 45%;
 }
 
 .lost{
   background: #ff6b70;
-  width: 50%;
+  width: 45%;
 }
 
 .teamOne {

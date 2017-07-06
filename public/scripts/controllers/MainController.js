@@ -126,7 +126,7 @@ app.controller('MainController', function(SearchService){
       vm.oneCurrentGameTeam = [];
       vm.twoCurrentGameTeam = [];
       console.log(data);
-      
+
       for (var i = 0; i < data.participants.length; i++) {
         if (data.participants[i].teamId === 100){
           playerOne = {

@@ -34,11 +34,12 @@
       <hr>
       <h3>{{match.lane}}</h3><img class='matchIcon' ng-src="../images/champIcons/{{match.champion}}.png" alt="">
 
-      <button class='moreInfo' ng-click='mc.specificMatchCall($index)'></button>
+      <button class='moreInfo' ng-click='mc.specificMatchCall($index)'>More Info</button>
 
       <div class="oneMatch" ng-if='match.showDeets'>
-        <div class="table-responsive table-bordered won">
-          <table>
+        <button class='addNotes' type="button" name="button">Add Notes</button>
+        <div class="table-responsive won">
+          <table class='table-bordered matchTable'>
             <thead>
               <td>Champ</td>
               <td>Name</td>
@@ -53,8 +54,8 @@
           </table>
         </div>
 
-        <div class="table-responsive table-bordered lost">
-          <table>
+        <div class="table-responsive lost">
+          <table class='table-bordered matchTable'>
             <thead>
               <td>Champ</td>
               <td>Name</td>
