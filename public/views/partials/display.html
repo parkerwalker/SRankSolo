@@ -37,18 +37,18 @@
       <button ng-click='mc.specificMatchCall($index)'>See more info</button>
       <hr>
 
-      <div class="oneMatch">
+      <div class="oneMatch" ng-if='match.showDeets'>
 
 
         <div class='win'>
-          <div ng-repeat='players in match.specificMatchTeams.winning' class='winplayer'>
-            <p>{{player.summonerName}} {{player.champion}}</p>
+          <div ng-repeat='players in match.specificMatchWinning' class='winplayer'>
+            <p>{{players.summonerName}} {{players.champion}}</p>
             <p>{{players.kills}}/{{players.deaths}}/{{players.assists}}</p>
           </div>
         </div>
 
         <div class='loss'>
-          <div ng-repeat='players in match.specificMatchTeams.losing' class='lossplayer'>
+          <div ng-repeat='players in match.specificMatchLosing' class='lossplayer'>
             <p>{{players.summonerName}} {{players.champion}}</p>
             <p>{{players.kills}}/{{players.deaths}}/{{players.assists}}</p>
           </div>
