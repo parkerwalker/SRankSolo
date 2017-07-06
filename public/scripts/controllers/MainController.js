@@ -1,6 +1,6 @@
 app.controller('MainController', function(SearchService){
   var vm = this;
-  var key = 'RGAPI-5816c2c3-d07b-4953-8fda-bc5be08ab99d';
+  var key = 'RGAPI-3bf537a4-0bd9-4e25-80cf-468f8dc769aa';
 
   vm.summonerSearch = {};
   vm.recentMatchData = [];
@@ -46,11 +46,13 @@ app.controller('MainController', function(SearchService){
     var gameId = vm.recentMatchData[index].gameId;
     console.log('looking for gameId', gameId);
     SearchService.specificMatch(gameId).then(function(response){
+
       for (var i = 0; i < vm.recentMatchData.length; i++) {
         if(vm.recentMatchData[i].showDeets = true){
           vm.recentMatchData[i].showDeets = false;
-        }
-      }
+        }//end if
+      }//end end loop
+
       vm.recentMatchData[index].showDeets = true;
       vm.specificMatchData = response;
       var winningTeam = [];
@@ -124,7 +126,7 @@ app.controller('MainController', function(SearchService){
       vm.oneCurrentGameTeam = [];
       vm.twoCurrentGameTeam = [];
       console.log(data);
-
+      
       for (var i = 0; i < data.participants.length; i++) {
         if (data.participants[i].teamId === 100){
           playerOne = {

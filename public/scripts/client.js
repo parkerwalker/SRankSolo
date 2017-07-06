@@ -8,11 +8,11 @@ app.config(function($routeProvider){
     controller: 'MainController as mc'
   }).when('/login', {
     templateUrl: 'views/partials/login.html',
-    controller: 'LoginController',
-    controllerAs: 'LoginController as lc'
+    controller: 'LoginController as lc'
+    //controllerAs: 'LoginController as lc'
   }).when('/display', {
   templateUrl: 'views/partials/display.html',
   controller: 'MainController',
   controllerAs: 'MainController as mc'
-  })
+});
 });//end config

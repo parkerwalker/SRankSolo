@@ -2,30 +2,64 @@
   padding-left: 10%;
 }
 
-.matchList{
-  max-width: 60%;
-}
-
 .championMastery{
   padding-left:  5%;
   max-width: 40%;
   min-width: 30%;
   float: right;
+  background: grey;
 }
+
 .container {
   margin-left: 10%;
 }
 
+.matchIcon {
+  width: 15%;
+  float: bottom;
+}
+
+.matchList{
+  max-width: 60%;
+  background: lightblue;
+}
+
+.oneMatch{
+
+}
+
+.champIcon {
+  height: 30px;
+}
+
+.moreInfo {
+  float: right;
+}
+
 .win {
-background: blue;
-width: 50%;
-height: 20%;
+
+  height: 20%;
 }
 
 .loss {
-  background: red;
-  width: 50%;
+
   height: 20%;
+}
+/*table start*/
+
+td {
+  padding-left: 10px;
+
+}
+.won{
+  background: #639fff;
+  float: right;
+  width: 50%;
+}
+
+.lost{
+  background: #ff6b70;
+  width: 50%;
 }
 
 .teamOne {
