@@ -46,6 +46,11 @@ app.controller('MainController', function(SearchService){
     var gameId = vm.recentMatchData[index].gameId;
     console.log('looking for gameId', gameId);
     SearchService.specificMatch(gameId).then(function(response){
+      for (var i = 0; i < vm.recentMatchData.length; i++) {
+        if(vm.recentMatchData[i].showDeets = true){
+          vm.recentMatchData[i].showDeets = false;
+        }
+      }
       vm.recentMatchData[index].showDeets = true;
       vm.specificMatchData = response;
       var winningTeam = [];
