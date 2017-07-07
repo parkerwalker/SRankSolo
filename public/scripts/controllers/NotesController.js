@@ -1,4 +1,4 @@
-app.controller('NotesController', function() {
+app.controller('NotesController', function(LoginService) {
   var vm = this;
   console.log('in notes controller');
 

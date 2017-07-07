@@ -8,7 +8,7 @@ app.controller('LoginController', function(LoginService, $location){
 
   vm.summonerName = '';
   vm.password = '';
-  vm.logged = false;
+  vm.loggedIn = false;
 
   vm.registerUser = function(){
     var loginInfo = {
@@ -30,7 +30,7 @@ app.controller('LoginController', function(LoginService, $location){
     LoginService.loginAttempt(loginInfo).then(function(response){
       console.log(response.data);
       LoginService.loggedIn = true;
-      vm.logged = LoginService.loggedIn;
+      vm.loggedIn = LoginService.loggedIn;
       if(response.data === 'match'){
         vm.go('/display');
       }

@@ -4,7 +4,7 @@ app.service('LoginService', function($http){
   ls = this;
   ls.summonerName = '';
   ls.loggedIn = false;
-  console.log(ls.loggedIn);
+  console.log(ls.loggedIn, ls.summonerName);
 
   ls.registerAttempt = function(data){
     return $http({
@@ -23,6 +23,7 @@ app.service('LoginService', function($http){
       data: data
     }).then(function(response){
       ls.summonerName = data.userName;
+      console.log(ls.summonerName);
       return response;
     });
   };//end loginAttempt
