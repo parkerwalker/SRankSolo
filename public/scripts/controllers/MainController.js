@@ -9,6 +9,12 @@ app.controller('MainController', function(SearchService, LoginService){
   vm.loggedIn = LoginService.loggedIn;
   console.log(vm.loggedIn);
 
+  vm.initSummoner = function(){
+    vm.summonerName = LoginService.summonerName;
+
+    vm.summonerInput();
+  }
+
 
   vm.summonerInput = function(){
     vm.summonerSearch = {};
@@ -19,11 +25,11 @@ app.controller('MainController', function(SearchService, LoginService){
     var searchUrl = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + summonerName + '?api_key=' + key;
     vm.summonerName = '';
 
-    if (summonerName == LoginService.summonerName) {
+    if (summonerName == LoginService.summonerName){
       vm.shownotes = true;
     }else{
       vm.shownotes = false;
-    }
+    }//end shownotes if/else
 
     if(summonerName == null || summonerName == undefined || summonerName == ''){
       alert('No Summoner entered')
