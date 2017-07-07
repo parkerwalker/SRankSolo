@@ -27,7 +27,7 @@ router.post('/', function(req, res){
           else{
             console.log('user found');
             if (isMatch){
-              res.send('pass match');
+              res.send('match');
             }
             else{
               res.send('pass not match')

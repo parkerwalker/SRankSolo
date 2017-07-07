@@ -9,6 +9,7 @@ app.controller('MainController', function(SearchService, LoginService){
   vm.loggedIn = LoginService.loggedIn;
   console.log(LoginService.loggedIn);
 
+
   vm.summonerInput = function(){
     vm.summonerSearch = {};
     vm.recentMatchData = [];
@@ -118,6 +119,8 @@ app.controller('MainController', function(SearchService, LoginService){
           vm.recentMatchData[i].specificMatchLosing = losingTeam;
         }//end for loop
       console.log(vm.recentMatchData);
+      vm.loggedIn = LoginService.loggedIn;
+      console.log(vm.loggedIn);
     });//end searchservice.specificMatch
   };//end specificMatchCall
 
@@ -147,7 +150,7 @@ app.controller('MainController', function(SearchService, LoginService){
       }//end loop
       console.log(vm.oneCurrentGameTeam, vm.twoCurrentGameTeam);
     });//end searchservice.currentGame
-    vm.loggedIn = LoginService.loggedIn;
+
   };//end currentGameCall
 
 });//end controller

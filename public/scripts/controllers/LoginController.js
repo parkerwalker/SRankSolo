@@ -1,6 +1,10 @@
-app.controller('LoginController', function(LoginService){
+app.controller('LoginController', function(LoginService, $location){
   var vm = this;
   console.log('in LoginController');
+
+  vm.go = function(path){
+    $location .url(path);
+  };//end go function
 
   vm.summonerName = '';
   vm.password = '';
@@ -27,6 +31,9 @@ app.controller('LoginController', function(LoginService){
       console.log(response.data);
       LoginService.loggedIn = true;
       vm.logged = LoginService.loggedIn;
+      if(response.data === 'match'){
+        vm.go('/display');
+      }
     });
 
   };//end loginUser

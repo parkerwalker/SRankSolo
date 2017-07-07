@@ -2,7 +2,7 @@ app.service('LoginService', function($http){
   console.log('in LoginService');
 
   ls = this;
-  //ls.summonerName =
+  ls.summonerName = '';
   ls.loggedIn = false;
   console.log(ls.loggedIn);
 
@@ -22,9 +22,9 @@ app.service('LoginService', function($http){
       url: '/login',
       data: data
     }).then(function(response){
+      ls.summonerName = data.userName;
       return response;
     });
-  }
-
+  };//end loginAttempt
 
 });//end LoginService
