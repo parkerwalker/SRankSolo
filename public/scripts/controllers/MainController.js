@@ -9,11 +9,11 @@ app.controller('MainController', function(SearchService, LoginService){
   vm.loggedIn = LoginService.loggedIn;
   console.log(vm.loggedIn);
 
-  vm.initSummoner = function(){
-    vm.summonerName = LoginService.summonerName;
-
-    vm.summonerInput();
-  }
+  // vm.initSummoner = function(){
+  //   vm.summonerName = LoginService.summonerName;
+  //
+  //   vm.summonerInput();
+  // };//end initSummoner
 
 
   vm.summonerInput = function(){
@@ -56,7 +56,7 @@ app.controller('MainController', function(SearchService, LoginService){
             vm.recentMatchData[i].specificMatchLosing = [];//this sets aside an empty array to file with specificMatchCall data
             vm.recentMatchData[i].showDeets = false;
           }//end for loop
-          //console.log(vm.recentMatchData);
+          console.log(vm.recentMatchData);
         });//end searchservice.searchmatch call
       });//end searchservice.searchSummoner call
     }//end else
@@ -66,6 +66,7 @@ app.controller('MainController', function(SearchService, LoginService){
     var gameId = vm.recentMatchData[index].gameId;
     console.log('looking for gameId', gameId);
     SearchService.specificMatch(gameId).then(function(response){
+      console.log(response);
 
       for (var i = 0; i < vm.recentMatchData.length; i++) {
         if(vm.recentMatchData[i].showDeets = true){
@@ -90,7 +91,8 @@ app.controller('MainController', function(SearchService, LoginService){
               deaths: vm.specificMatchData.participants[i].stats.deaths,
               assists: vm.specificMatchData.participants[i].stats.assists,
               win: vm.specificMatchData.participants[i].stats.win,
-              rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
+              rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier,
+              lane: vm.specificMatchData.participants[i].timeline.lane
             }//end object
           }else{
             players = {
@@ -101,7 +103,8 @@ app.controller('MainController', function(SearchService, LoginService){
               deaths: vm.specificMatchData.participants[i].stats.deaths,
               assists: vm.specificMatchData.participants[i].stats.assists,
               win: vm.specificMatchData.participants[i].stats.win,
-              rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
+              rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier,
+              lane: vm.specificMatchData.participants[i].timeline.lane
             }//end object
           }//end else
           winningTeam.push(players);
@@ -116,7 +119,8 @@ app.controller('MainController', function(SearchService, LoginService){
               deaths: vm.specificMatchData.participants[i].stats.deaths,
               assists: vm.specificMatchData.participants[i].stats.assists,
               win: vm.specificMatchData.participants[i].stats.win,
-              rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
+              rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier,
+              lane: vm.specificMatchData.participants[i].timeline.lane
             }//end object
           }else{
             players = {
@@ -127,7 +131,8 @@ app.controller('MainController', function(SearchService, LoginService){
               deaths: vm.specificMatchData.participants[i].stats.deaths,
               assists: vm.specificMatchData.participants[i].stats.assists,
               win: vm.specificMatchData.participants[i].stats.win,
-              rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier
+              rank: vm.specificMatchData.participants[i].highestAchievedSeasonTier,
+              lane: vm.specificMatchData.participants[i].timeline.lane
             }//end object
           }//end else
           losingTeam.push(players);

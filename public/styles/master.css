@@ -4,8 +4,8 @@
 
 .championMastery{
   padding-left:  5%;
-  max-width: 40%;
-  min-width: 30%;
+  max-width: 20%;
+
   float: right;
   background: grey;
 }
@@ -20,7 +20,7 @@
 }
 
 .matchList{
-  max-width: 60%;
+  max-width: 80%;
   background: lightblue;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .champIcon {
-  height: 30px;
+  height: 45px;
 }
 
 .moreInfo {

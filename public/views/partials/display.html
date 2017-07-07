@@ -1,5 +1,4 @@
 
-
 <div ng-init='mc.initSummoner()' class="container">
   <div class="SummonerInfo">
     <h2>{{mc.summonerSearch.name}}</h2>
@@ -46,12 +45,14 @@
               <td>Champ</td>
               <td>Name</td>
               <td>Kda</td>
+              <td>lane</td>
             </thead>
 
             <tr class='win' ng-repeat='players in match.specificMatchWinning'>
               <td><img class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt=""></td>
-              <td>{{players.summonerName}}</td>
+              <td>{{players.summonerName}}<p>{{players.rank}}</p></td>
               <td>{{players.kills}}/{{players.deaths}}/{{players.assists}}</td>
+              <td>{{players.lane}}</td>
             </tr>
           </table>
         </div>
@@ -62,12 +63,14 @@
               <td>Champ</td>
               <td>Name</td>
               <td>Kda</td>
+              <td>lane</td>
             </thead>
 
             <tr class='loss' ng-repeat='players in match.specificMatchLosing'>
               <td><img class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt=""></td>
-              <td>{{players.summonerName}}</td>
+              <td>{{players.summonerName}}<p>{{players.rank}}</p></td>
               <td>{{players.kills}}/{{players.deaths}}/{{players.assists}}</td>
+              <td>{{players.lane}}</td>
             </tr>
           </table>
         </div>
