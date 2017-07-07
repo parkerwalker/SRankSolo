@@ -4,16 +4,31 @@ app.controller('LoginController', function(LoginService){
 
   vm.summonerName = '';
   vm.password = '';
+  vm.logged = false;
 
   vm.registerUser = function(){
-    console.log(vm.summonerName, vm.password);
     var loginInfo = {
       userName: vm.summonerName,
       password: vm.password
     }
-
-    LoginService.registerAttempt(loginInfo);
-
+    LoginService.registerAttempt(loginInfo).then(function(response){
+      console.log(response);
+    });//end registerAttempt
   };//end registerUser
+
+  vm.loginUser = function(){
+    var loginInfo = {
+      userName: vm.summonerName,
+      password: vm.password
+    }
+    console.log('login click', loginInfo);
+
+    LoginService.loginAttempt(loginInfo).then(function(response){
+      console.log(response.data);
+      LoginService.loggedIn = true;
+      vm.logged = LoginService.loggedIn;
+    });
+
+  };//end loginUser
 
 });//end LoginController

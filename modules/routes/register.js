@@ -9,7 +9,7 @@ router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 
 router.post('/', function(req, res){
-  console.log('hit to login');
+  console.log('hit to register');
 
   bcrypt.genSalt(12, function(err, salt){
     if(err){
@@ -26,7 +26,7 @@ router.post('/', function(req, res){
         else{
           console.log('hash', hash);
           var newUser = {
-            userName: req.body.userName,
+            username: req.body.userName,
             password: hash
           }//end newUser
           console.log('newUser', newUser);

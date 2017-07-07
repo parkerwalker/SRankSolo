@@ -37,7 +37,9 @@
       <button class='moreInfo' ng-click='mc.specificMatchCall($index)'>More Info</button>
 
       <div class="oneMatch" ng-if='match.showDeets'>
-        <button class='addNotes' type="button" name="button">Add Notes</button>
+        <div ng-if='mc.loggedIn' class="">
+          <button class='addNotes' type="button" name="button">Add Notes</button>
+        </div>
         <div class="table-responsive won">
           <table class='table-bordered matchTable'>
             <thead>

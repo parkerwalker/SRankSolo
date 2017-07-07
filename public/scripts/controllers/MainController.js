@@ -1,4 +1,4 @@
-app.controller('MainController', function(SearchService){
+app.controller('MainController', function(SearchService, LoginService){
   var vm = this;
   var key = 'RGAPI-1f1d7faa-1936-43e9-aa4a-30cb97e2ad63';
 
@@ -6,6 +6,8 @@ app.controller('MainController', function(SearchService){
   vm.recentMatchData = [];
   vm.championMastery = [];
 
+  vm.loggedIn = LoginService.loggedIn;
+  console.log(LoginService.loggedIn);
 
   vm.summonerInput = function(){
     vm.summonerSearch = {};
@@ -145,6 +147,7 @@ app.controller('MainController', function(SearchService){
       }//end loop
       console.log(vm.oneCurrentGameTeam, vm.twoCurrentGameTeam);
     });//end searchservice.currentGame
+    vm.loggedIn = LoginService.loggedIn;
   };//end currentGameCall
 
 });//end controller
