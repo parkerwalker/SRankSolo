@@ -3,9 +3,15 @@ app.service('LoginService', function($http){
 
   ls = this;
 
-  ls.loginAttempt = function(){
-    return 'hahaha';
-    console.log('in LoginService.loginAttempt');
-  }
+  ls.registerAttempt = function(data){
+    console.log(data);
+    return $http({
+      method: 'POST',
+      url: '/register',
+      data: data
+    }).then(function(response){
+      console.log('back from response', response);
+    })
+  };//end registerAttempt 
 
 });//end LoginService

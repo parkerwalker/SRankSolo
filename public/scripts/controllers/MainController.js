@@ -1,6 +1,6 @@
 app.controller('MainController', function(SearchService){
   var vm = this;
-  var key = 'RGAPI-3bf537a4-0bd9-4e25-80cf-468f8dc769aa';
+  var key = 'RGAPI-1f1d7faa-1936-43e9-aa4a-30cb97e2ad63';
 
   vm.summonerSearch = {};
   vm.recentMatchData = [];

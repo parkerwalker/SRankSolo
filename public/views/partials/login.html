@@ -1,8 +1,8 @@
 
 <div class="container">
   <form ng-submit='lc.registerUser()' class="">
-    <input type="text" name="" value="" placeholder="Summoner Name">
-    <input type="text" name="" value="" placeholder="Passwords">
+    <input ng-model='lc.summonerName' type="text" name="" value="" placeholder="Summoner Name">
+    <input ng-model='lc.password' type="text" name="" value="" placeholder="Password">
     <button ng-click='lc.registerUser()' type="button" name="button">Register</button>
   </form>
 
