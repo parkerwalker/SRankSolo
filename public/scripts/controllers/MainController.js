@@ -23,17 +23,19 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     console.log(vm.recentMatchData[index].viewAddNotes);
 
     vm.laneMatchup = {};
+    vm.laneMatchup.wonLane = [];
+    vm.laneMatchup.lostLane = [];
     vm.laneMatchup.lane = vm.recentMatchData[index].lane;
 
     for (var i = 0; i < vm.recentMatchData[index].specificMatchLosing.length; i++) {
         if (vm.recentMatchData[index].specificMatchLosing[i].lane == vm.recentMatchData[index].lane){
-          vm.laneMatchup.lostLane = vm.recentMatchData[index].specificMatchLosing[i];
+          vm.laneMatchup.lostLane.push(vm.recentMatchData[index].specificMatchLosing[i]);
         }//end if
     }//end for loop
 
     for (var i = 0; i < vm.recentMatchData[index].specificMatchWinning.length; i++) {
         if (vm.recentMatchData[index].specificMatchWinning[i].lane == vm.recentMatchData[index].lane){
-          vm.laneMatchup.wonLane = vm.recentMatchData[index].specificMatchWinning[i];
+          vm.laneMatchup.wonLane.push(vm.recentMatchData[index].specificMatchWinning[i]); 
         }//end if
     }//end for loop
     console.log(vm.laneMatchup);

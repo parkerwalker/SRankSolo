@@ -75,8 +75,11 @@
           </table>
         </div>
       </div>
-      <div ng-if='match.viewAddNotes' class="">
-          <p>some shit is gonna go here</p>
+      <div ng-if='match.viewAddNotes' class="editNotes">
+          <img ng-repeat='players in mc.laneMatchup.wonLane' class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt=""><h4>vs.</h4>
+          <img ng-repeat='players in mc.laneMatchup.lostLane' class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt="">
+
+          <input type="text" name="" value="" placeholder="Add your notes on this match up">
       </div>
 
     </div>

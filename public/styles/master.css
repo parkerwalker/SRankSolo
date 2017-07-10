@@ -63,6 +63,11 @@ td {
   max-width: 10%;
 }
 
+.editNotes {
+  position: absolute;
+  float: right;
+}
+
 .won{
   background: #639fff;
   float: right;
