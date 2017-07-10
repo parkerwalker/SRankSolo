@@ -10,6 +10,7 @@
   <script src="scripts/controllers/NotesController.js" charset="utf-8"></script>
   <script src="scripts/services/SearchService.js" charset="utf-8"></script>
   <script src="scripts/services/LoginService.js" charset="utf-8"></script>
+  <script src="scripts/services/NotesService.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/vendors/bootstrap.min.css">
   <link rel="stylesheet" href="/styles/master.css">
   <title>S-Rank</title>
@@ -19,7 +20,7 @@
     <header class='jumbotron'>
       <h1>S-Rank</h1>
       <input ng-model='mc.summonerName' type="text" name="" value="">
-      <button ng-click='mc.summonerInput()'><a href='#!/display'>Search</a></button>
+      <button ng-click='mc.summonerInput()'>Search</button>
       <button><a href='#!/login'>Login</a></button>
       <button><a href='#!/notes'>Notes</a></button>
     </header>

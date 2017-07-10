@@ -1,6 +1,6 @@
 app.service('SearchService', function($http){
   console.log('searchservice');
-  var key = 'RGAPI-1f1d7faa-1936-43e9-aa4a-30cb97e2ad63';
+  var key = 'RGAPI-4a8351b9-31b9-4f7c-87c3-0df63f429faa';
 
   ss = this;
 

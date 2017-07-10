@@ -1,13 +1,35 @@
-app.controller('MainController', function(SearchService, LoginService){
+app.controller('MainController', function(SearchService, LoginService, NotesService, $location){
   var vm = this;
-  var key = 'RGAPI-1f1d7faa-1936-43e9-aa4a-30cb97e2ad63';
+  var key = 'RGAPI-4a8351b9-31b9-4f7c-87c3-0df63f429faa';
 
   vm.summonerSearch = {};
   vm.recentMatchData = [];
   vm.championMastery = [];
 
   vm.loggedIn = LoginService.loggedIn;
-  console.log(vm.loggedIn);
+
+
+  vm.addNotes = function(index){
+    console.log('addnotes click', index);
+    console.log(vm.recentMatchData[index]);
+
+    vm.laneMatchup = {};
+    vm.laneMatchup.lane = vm.recentMatchData[index].lane;
+
+    for (var i = 0; i < vm.recentMatchData[index].specificMatchLosing.length; i++) {
+        if (vm.recentMatchData[index].specificMatchLosing[i].lane == vm.recentMatchData[index].lane){
+          vm.laneMatchup.lostLane = vm.recentMatchData[index].specificMatchLosing[i];
+        }//end if
+    }//end for loop
+
+    for (var i = 0; i < vm.recentMatchData[index].specificMatchWinning.length; i++) {
+        if (vm.recentMatchData[index].specificMatchWinning[i].lane == vm.recentMatchData[index].lane){
+          vm.laneMatchup.wonLane = vm.recentMatchData[index].specificMatchWinning[i];
+        }//end if
+    }//end for loop
+    console.log(vm.laneMatchup);
+    NotesService.laneMatchup = vm.laneMatchup;
+  };//end addNotes
 
   // vm.initSummoner = function(){
   //   vm.summonerName = LoginService.summonerName;
@@ -15,8 +37,14 @@ app.controller('MainController', function(SearchService, LoginService){
   //   vm.summonerInput();
   // };//end initSummoner
 
+  vm.go = function(path){
+    $location .url(path);
+  };//end go function
 
   vm.summonerInput = function(){
+
+    vm.go('/display');//redirects to display page
+
     vm.summonerSearch = {};
     vm.recentMatchData = [];
     vm.championMastery = [];
@@ -143,6 +171,7 @@ app.controller('MainController', function(SearchService, LoginService){
       console.log(vm.recentMatchData);
       vm.loggedIn = LoginService.loggedIn;
       console.log(vm.loggedIn);
+      NotesService.recentMatchData = vm.recentMatchData;
     });//end searchservice.specificMatch
   };//end specificMatchCall
 

@@ -9,15 +9,15 @@
       <div class="teamOne">
         <div ng-repeat='players in mc.oneCurrentGameTeam' class="">
           <p>{{players.name}}</p>
+          <p>{{players.champion}}</p>
         </div>
       </div>
       <div class="teamTwo">
         <div ng-repeat='players in mc.twoCurrentGameTeam' class="">
           <p>{{players.name}}</p>
+          <p>{{players.champion}}</p>
         </div>
       </div>
-
-
     </div>
   </div>
 
@@ -37,7 +37,7 @@
 
       <div class="oneMatch" ng-if='match.showDeets'>
         <div ng-if='mc.shownotes' class="">
-          <button class='addNotes' type="button" name="button">Add Notes</button>
+          <button ng-click='mc.addNotes($index)' class='addNotes' type="button" name="button">Add Notes</button>
         </div>
         <div class="table-responsive won">
           <table class='table-bordered matchTable'>
