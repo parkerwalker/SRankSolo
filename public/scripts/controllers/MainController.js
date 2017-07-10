@@ -13,6 +13,15 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     console.log('addnotes click', index);
     console.log(vm.recentMatchData[index]);
 
+    for (var i = 0; i < vm.recentMatchData.length; i++) {
+      if(vm.recentMatchData[i].viewAddNotes = true){
+        vm.recentMatchData[i].viewAddNotes = false;
+      }//end if
+    }//end end loop
+
+    vm.recentMatchData[index].viewAddNotes = true;
+    console.log(vm.recentMatchData[index].viewAddNotes);
+
     vm.laneMatchup = {};
     vm.laneMatchup.lane = vm.recentMatchData[index].lane;
 
@@ -83,6 +92,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
             vm.recentMatchData[i].specificMatchWinning = [];
             vm.recentMatchData[i].specificMatchLosing = [];//this sets aside an empty array to file with specificMatchCall data
             vm.recentMatchData[i].showDeets = false;
+            vm.recentMatchData[i].viewAddNotes = false;
           }//end for loop
           console.log(vm.recentMatchData);
         });//end searchservice.searchmatch call
@@ -95,12 +105,16 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     console.log('looking for gameId', gameId);
     SearchService.specificMatch(gameId).then(function(response){
       console.log(response);
-
+      //hides all other match data
       for (var i = 0; i < vm.recentMatchData.length; i++) {
         if(vm.recentMatchData[i].showDeets = true){
           vm.recentMatchData[i].showDeets = false;
         }//end if
       }//end end loop
+      //hides all viewAddNotes
+      for (var i = 0; i < vm.recentMatchData.length; i++) {
+        vm.recentMatchData[i].viewAddNotes = false;
+      }//end loop
 
       vm.recentMatchData[index].showDeets = true;
       vm.specificMatchData = response;
@@ -168,9 +182,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
         vm.recentMatchData[i].specificMatchWinning = winningTeam;
         vm.recentMatchData[i].specificMatchLosing = losingTeam;
       }//end for loop
-      console.log(vm.recentMatchData);
       vm.loggedIn = LoginService.loggedIn;
-      console.log(vm.loggedIn);
       NotesService.recentMatchData = vm.recentMatchData;
     });//end searchservice.specificMatch
   };//end specificMatchCall
