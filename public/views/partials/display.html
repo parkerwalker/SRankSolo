@@ -76,10 +76,12 @@
         </div>
       </div>
       <div ng-if='match.viewAddNotes' class="editNotes">
+        <div class="">
           <img ng-repeat='players in mc.laneMatchup.wonLane' class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt=""><h4>vs.</h4>
           <img ng-repeat='players in mc.laneMatchup.lostLane' class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt="">
-
-          <input type="text" name="" value="" placeholder="Add your notes on this match up">
+        </div>
+          <input ng-submit='mc.postNotes()' ng-model='mc.laneMatchup.notes' type="text" name="" value="" placeholder="Add your notes on this match up">
+          <button ng-click='mc.postNotes()' type="button" name="button">Save</button>
       </div>
 
     </div>

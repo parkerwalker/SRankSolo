@@ -5,13 +5,12 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
   vm.summonerSearch = {};
   vm.recentMatchData = [];
   vm.championMastery = [];
+  vm.laneMatchup = {};
 
   vm.loggedIn = LoginService.loggedIn;
 
 
   vm.addNotes = function(index){
-    console.log('addnotes click', index);
-    console.log(vm.recentMatchData[index]);
 
     for (var i = 0; i < vm.recentMatchData.length; i++) {
       if(vm.recentMatchData[i].viewAddNotes = true){
@@ -22,10 +21,11 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     vm.recentMatchData[index].viewAddNotes = true;
     console.log(vm.recentMatchData[index].viewAddNotes);
 
-    vm.laneMatchup = {};
+
     vm.laneMatchup.wonLane = [];
     vm.laneMatchup.lostLane = [];
     vm.laneMatchup.lane = vm.recentMatchData[index].lane;
+    vm.laneMatchup.notes = '';
 
     for (var i = 0; i < vm.recentMatchData[index].specificMatchLosing.length; i++) {
         if (vm.recentMatchData[index].specificMatchLosing[i].lane == vm.recentMatchData[index].lane){
@@ -35,12 +35,17 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
 
     for (var i = 0; i < vm.recentMatchData[index].specificMatchWinning.length; i++) {
         if (vm.recentMatchData[index].specificMatchWinning[i].lane == vm.recentMatchData[index].lane){
-          vm.laneMatchup.wonLane.push(vm.recentMatchData[index].specificMatchWinning[i]); 
+          vm.laneMatchup.wonLane.push(vm.recentMatchData[index].specificMatchWinning[i]);
         }//end if
     }//end for loop
     console.log(vm.laneMatchup);
     NotesService.laneMatchup = vm.laneMatchup;
   };//end addNotes
+
+  vm.postNotes = function(){
+    NotesService.postNotes(vm.laneMatchup)
+
+  };//end postNotes
 
   // vm.initSummoner = function(){
   //   vm.summonerName = LoginService.summonerName;
