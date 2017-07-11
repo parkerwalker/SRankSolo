@@ -35,7 +35,10 @@ app.service('NotesService', function($http){
       method: 'POST',
       url:'/notes/search',
       data: data
-    })
-  }
+    }).then(function(response){
+      console.log(response);
+      return response
+    })//end then
+  };//end searchParams
 
 });//end service

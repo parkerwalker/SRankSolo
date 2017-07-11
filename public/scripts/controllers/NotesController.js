@@ -18,7 +18,10 @@ app.controller('NotesController', function(LoginService, NotesService) {
     }
 
     objectToSearch.champs.push(vm.matchUpSearch.champSearch1, vm.matchUpSearch.champSearch2)
-    NotesService.searchParams(objectToSearch)
+    NotesService.searchParams(objectToSearch).then(function(response){
+      vm.returnNotes = response.data;
+      console.log(vm.returnNotes);
+    })
   };//end searchNotes
 
 });//end controller

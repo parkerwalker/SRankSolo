@@ -24,6 +24,8 @@ router.post('/', function(req, res){
 router.post('/search', function(req, res){
   console.log('get notes hit', req.body);
 
+  var foundNotes = [];
+
   notesModel.find({createdBy: req.body.createdBy, lane: req.body.lane}, function(err, notesModel){
     if(err){
       console.log('no notes found');
@@ -33,17 +35,18 @@ router.post('/search', function(req, res){
       console.log(notesModel);
       for (var i = 0; i < notesModel.length; i++) {
         for (var j = 0; j < notesModel[i].players.length; j++) {
-          console.log(notesModel[i].players[j].champion);
           if (notesModel[i].players[j].champion == req.body.champs[0]) {
-            for (var l = 0; l < notesModel[i].players.length; l++){
-              if (notesModel[i].players[l].champion == req.body.champs[1]) {
+            for (var k = 0; k < notesModel[i].players.length; k++){
+              if (notesModel[i].players[k].champion == req.body.champs[1]) {
                 console.log(notesModel[i].notes);
-              }
-            }
-          }
+                foundNotes.push(notesModel[i].notes)
+              }//end second champ if
+            }//end second param loop
+          }//end if first champ match
         }//end notesModel player loop
 
       }//end notesModel loop
+      res.send(foundNotes)
     }//end else
 
   });//end find function
