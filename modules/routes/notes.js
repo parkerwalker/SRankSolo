@@ -30,7 +30,22 @@ router.post('/search', function(req, res){
       res.sendStatus(400);
     }else{
       console.log('found notes!');
-    }
+      console.log(notesModel);
+      for (var i = 0; i < notesModel.length; i++) {
+        for (var j = 0; j < notesModel[i].players.length; j++) {
+          console.log(notesModel[i].players[j].champion);
+          if (notesModel[i].players[j].champion == req.body.champs[0]) {
+            for (var l = 0; l < notesModel[i].players.length; l++){
+              if (notesModel[i].players[l].champion == req.body.champs[1]) {
+                console.log(notesModel[i].notes);
+              }
+            }
+          }
+        }//end notesModel player loop
+
+      }//end notesModel loop
+    }//end else
+
   });//end find function
 });//end note search
 
