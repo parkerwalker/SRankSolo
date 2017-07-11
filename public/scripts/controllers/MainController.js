@@ -1,6 +1,6 @@
 app.controller('MainController', function(SearchService, LoginService, NotesService, $location){
   var vm = this;
-  var key = 'RGAPI-4a8351b9-31b9-4f7c-87c3-0df63f429faa';
+  var key = 'RGAPI-46b2829c-e5cb-4fc4-a312-399ea6326fe2';
 
   vm.summonerSearch = {};
   vm.recentMatchData = [];
@@ -26,6 +26,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     vm.laneMatchup.lostLane = [];
     vm.laneMatchup.lane = vm.recentMatchData[index].lane;
     vm.laneMatchup.notes = '';
+    vm.laneMatchup.createdBy = LoginService.summonerName;
 
     for (var i = 0; i < vm.recentMatchData[index].specificMatchLosing.length; i++) {
         if (vm.recentMatchData[index].specificMatchLosing[i].lane == vm.recentMatchData[index].lane){

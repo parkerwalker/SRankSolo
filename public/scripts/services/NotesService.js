@@ -9,7 +9,8 @@ app.service('NotesService', function($http){
     objectToSend = {
       notes: data.notes,
       players: [],
-      lane: data.lane
+      lane: data.lane,
+      createdBy: data.createdBy
     }//end objectToSend
 
     for (var i = 0; i < data.lostLane.length; i++) {
@@ -19,11 +20,13 @@ app.service('NotesService', function($http){
       objectToSend.players.push(data.wonLane[i]);
     }
     console.log(objectToSend);
-    // return $http({
-    //   method: 'POST',
-    //   url: '/notes',
-    //   data:
-    // })
+    return $http({
+      method: 'POST',
+      url: '/notes',
+      data: objectToSend
+    }).then(function(response){
+      console.log(response);
+    })
   };//end post notes
 
 });//end service
