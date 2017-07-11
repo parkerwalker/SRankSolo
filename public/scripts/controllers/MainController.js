@@ -44,9 +44,40 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
   };//end addNotes
 
   vm.postNotes = function(){
-    NotesService.postNotes(vm.laneMatchup)
-
+    if(vm.laneMatchup.notes == ''){
+      alert('Enter some notes')
+    }else{
+      NotesService.postNotes(vm.laneMatchup)
+    }
   };//end postNotes
+
+  vm.currentGameCall = function(){
+    var summonerId = vm.summonerSearch.id;
+    SearchService.currentGame(summonerId).then(function(data){
+      vm.oneCurrentGameTeam = [];
+      vm.twoCurrentGameTeam = [];
+      console.log(data);
+
+      for (var i = 0; i < data.participants.length; i++) {
+        if (data.participants[i].teamId === 100){
+          playerOne = {
+            name: data.participants[i].summonerName,
+            champion: data.participants[i].championId
+          }
+          vm.oneCurrentGameTeam.push(playerOne);
+        }else{
+          playerTwo = {
+            name: data.participants[i].summonerName,
+            champion: data.participants[i].championId
+          }
+          vm.twoCurrentGameTeam.push(playerTwo);
+        }//end else
+
+      }//end loop
+      console.log(vm.oneCurrentGameTeam, vm.twoCurrentGameTeam);
+    });//end searchservice.currentGame
+
+  };//end currentGameCall
 
   // vm.initSummoner = function(){
   //   vm.summonerName = LoginService.summonerName;
@@ -195,33 +226,6 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     });//end searchservice.specificMatch
   };//end specificMatchCall
 
-  vm.currentGameCall = function(){
-    var summonerId = vm.summonerSearch.id;
-    console.log(vm.summonerSearch.id);
-    SearchService.currentGame(summonerId).then(function(data){
-      vm.oneCurrentGameTeam = [];
-      vm.twoCurrentGameTeam = [];
-      console.log(data);
 
-      for (var i = 0; i < data.participants.length; i++) {
-        if (data.participants[i].teamId === 100){
-          playerOne = {
-            name: data.participants[i].summonerName,
-            champion: data.participants[i].championId
-          }
-          vm.oneCurrentGameTeam.push(playerOne);
-        }else{
-          playerTwo = {
-            name: data.participants[i].summonerName,
-            champion: data.participants[i].championId
-          }
-          vm.twoCurrentGameTeam.push(playerTwo);
-        }//end else
-
-      }//end loop
-      console.log(vm.oneCurrentGameTeam, vm.twoCurrentGameTeam);
-    });//end searchservice.currentGame
-
-  };//end currentGameCall
 
 });//end controller

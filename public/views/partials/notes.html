@@ -1,8 +1,13 @@
 <div class="container">
   <form class="" action="" method="">
-    <input type="text" name="" value="" placeholder="">
-    <input type="text" name="" value="">
-    <input type="text" name="" value="">
-
+    <input ng-model='nc.matchUpSearch.champSearch1' type="text" name="" value="" placeholder="">
+    <input ng-model='nc.matchUpSearch.champSearch2' type="text" name="" value="">
+    <select class="" name="" ng-model='nc.matchUpSearch.laneSearch'>
+      <option value="TOP">Top Lane</option>
+      <option value="JUNGLE">Jungle</option>
+      <option value="MIDDLE">Middle Lane</option>
+      <option value="BOTTOM">Bottom Lane</option>
+    </select>
+    <button ng-click='nc.searchNotes()' type="button" name="button">Search</button>
   </form>
 </div>

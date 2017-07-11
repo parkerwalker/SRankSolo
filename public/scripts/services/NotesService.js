@@ -26,7 +26,16 @@ app.service('NotesService', function($http){
       data: objectToSend
     }).then(function(response){
       console.log(response);
-    })
+    });
   };//end post notes
+
+  ns.searchParams = function(data){
+    console.log(data);
+    return $http({
+      method: 'POST',
+      url:'/notes/search',
+      data: data
+    })
+  }
 
 });//end service

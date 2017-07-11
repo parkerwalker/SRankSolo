@@ -3,13 +3,22 @@ app.controller('NotesController', function(LoginService, NotesService) {
   console.log('in notes controller');
 
   vm.recentMatchData = NotesService.recentMatchData;
-  console.log(vm.recentMatchData);
   vm.laneMatchup = NotesService.laneMatchup;
-  console.log(vm.laneMatchup);
+  vm.matchUpSearch = {};
+  vm.matchUpSearch.laneSearch = '';
+  vm.matchUpSearch.champSearch1 = '';
+  vm.matchUpSearch.champSearch2 = '';
 
-  vm.getNotes =  function(){
-    console.log('getting notes');
-  };//end get notes
 
+  vm.searchNotes = function(){
+    objectToSearch = {
+      champs: [],
+      lane: vm.matchUpSearch.laneSearch,
+      createdBy: LoginService.summonerName
+    }
+
+    objectToSearch.champs.push(vm.matchUpSearch.champSearch1, vm.matchUpSearch.champSearch2)
+    NotesService.searchParams(objectToSearch)
+  };//end searchNotes
 
 });//end controller

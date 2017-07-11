@@ -21,5 +21,18 @@ router.post('/', function(req, res){
   res.sendStatus(201);
 });//end post
 
+router.post('/search', function(req, res){
+  console.log('get notes hit', req.body);
+
+  notesModel.find({createdBy: req.body.createdBy, lane: req.body.lane}, function(err, notesModel){
+    if(err){
+      console.log('no notes found');
+      res.sendStatus(400);
+    }else{
+      console.log('found notes!');
+    }
+  });//end find function
+});//end note search
+
 
 module.exports = router;
