@@ -1,6 +1,6 @@
 console.log('js');
 
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute', 'angucomplete-alt']);
 
 app.config(function($routeProvider){
   $routeProvider.when('/notes', {

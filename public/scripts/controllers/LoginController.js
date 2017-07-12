@@ -15,7 +15,7 @@ app.controller('LoginController', function(LoginService, $location){
       userName: vm.summonerName,
       password: vm.password
     }
-    LoginService.registerAttempt(loginInfo).then(function(response){
+     LoginService.registerAttempt(loginInfo).then(function(response){
       console.log(response);
     });//end registerAttempt
   };//end registerUser

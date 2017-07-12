@@ -1,6 +1,6 @@
 app.controller('MainController', function(SearchService, LoginService, NotesService, $location){
   var vm = this;
-  var key = 'RGAPI-46b2829c-e5cb-4fc4-a312-399ea6326fe2';
+  // var key = 'RGAPI-46b2829c-e5cb-4fc4-a312-399ea6326fe2';
 
   vm.summonerSearch = {};
   vm.recentMatchData = [];
@@ -20,7 +20,6 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
 
     vm.recentMatchData[index].viewAddNotes = true;
     console.log(vm.recentMatchData[index].viewAddNotes);
-
 
     vm.laneMatchup.wonLane = [];
     vm.laneMatchup.lostLane = [];

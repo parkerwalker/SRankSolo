@@ -1,7 +1,8 @@
-{
+var key = 'RGAPI-9adfb680-9f22-4d02-9fc8-4fe5056d96eb'
+var allChampions = {
     "type": "champion",
     "version": "7.13.1",
-    "data": {
+    data: {
         "MonkeyKing": {
             "title": "the Monkey King",
             "id": 62,
