@@ -1,7 +1,7 @@
 app.controller('MainController', function(SearchService, LoginService, NotesService, $location){
   var vm = this;
-  // var key = 'RGAPI-46b2829c-e5cb-4fc4-a312-399ea6326fe2';
 
+  vm.searchSuccess = false;
   vm.summonerSearch = {};
   vm.recentMatchData = [];
   vm.championMastery = [];
@@ -53,50 +53,56 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
   vm.currentGameCall = function(){
     var summonerId = vm.summonerSearch.id;
     SearchService.currentGame(summonerId).then(function(data){
-      vm.oneCurrentGameTeam = [];
-      vm.twoCurrentGameTeam = [];
-      console.log(data);
+      if (data.status == 404){
+        alert('Summoner Not In a game')
+      }else{
+        vm.oneCurrentGameTeam = [];
+        vm.twoCurrentGameTeam = [];
+        console.log(data);
 
-      for (var i = 0; i < data.participants.length; i++) {
-        if (data.participants[i].teamId === 100){
-          playerOne = {
-            name: data.participants[i].summonerName,
-            champion: data.participants[i].championId
-          }
-          vm.oneCurrentGameTeam.push(playerOne);
-        }else{
-          playerTwo = {
-            name: data.participants[i].summonerName,
-            champion: data.participants[i].championId
-          }
-          vm.twoCurrentGameTeam.push(playerTwo);
-        }//end else
-
-      }//end loop
-      console.log(vm.oneCurrentGameTeam, vm.twoCurrentGameTeam);
+        for (var i = 0; i < data.participants.length; i++) {
+          if (data.participants[i].teamId === 100){
+            playerOne = {
+              name: data.participants[i].summonerName,
+              champion: data.participants[i].championId
+            }
+            vm.oneCurrentGameTeam.push(playerOne);
+          }else{
+            playerTwo = {
+              name: data.participants[i].summonerName,
+              champion: data.participants[i].championId
+            }
+            vm.twoCurrentGameTeam.push(playerTwo);
+          }//end else
+        }//end loop
+        console.log(vm.oneCurrentGameTeam, vm.twoCurrentGameTeam);
+      }//end err else
     });//end searchservice.currentGame
-
   };//end currentGameCall
 
-  // vm.initSummoner = function(){
-  //   vm.summonerName = LoginService.summonerName;
-  //
-  //   vm.summonerInput();
-  // };//end initSummoner
+  vm.initSummoner = function(){
+    vm.summonerName = LoginService.summonerName;
+
+    vm.summonerInput();
+  };//end initSummoner
 
   vm.go = function(path){
     $location .url(path);
   };//end go function
 
   vm.summonerInput = function(){
-
+    vm.searchSuccess = false;
     vm.go('/display');//redirects to display page
 
     vm.summonerSearch = {};
     vm.recentMatchData = [];
     vm.championMastery = [];
 
+
     var summonerName = vm.summonerName;
+    if(vm.summonerName == ''){
+      summonerName = LoginService.summonerName;
+    }
     var searchUrl = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + summonerName + '?api_key=' + key;
     vm.summonerName = '';
 
@@ -135,8 +141,8 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
               vm.recentMatchData[i].showDeets = false;
               vm.recentMatchData[i].viewAddNotes = false;
             }//end for loop
-            console.log(vm.recentMatchData);
           });//end searchservice.searchmatch call
+          vm.searchSuccess = true;
         }//end else err
       });//end searchservice.searchSummoner call
 

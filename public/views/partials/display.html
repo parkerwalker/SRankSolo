@@ -3,7 +3,7 @@
   <div class="SummonerInfo">
     <h2>{{mc.summonerSearch.name}}</h2>
   </div>
-  <div class="">
+  <div ng-if='mc.searchSuccess' class="">
     <button ng-click='mc.currentGameCall()' type="button">Current Game</button>
     <div class="currentGame">
       <div class="teamOne">

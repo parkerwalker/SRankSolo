@@ -3,6 +3,7 @@ app.controller('NotesController', function(LoginService, NotesService) {
   console.log('in notes controller');
   vm.allChampionsArray = [];
   vm.searchInputs = [];
+  vm.loggedIn = LoginService.loggedIn;
 
 
   vm.recentMatchData = NotesService.recentMatchData;
@@ -23,7 +24,7 @@ app.controller('NotesController', function(LoginService, NotesService) {
 
 
   vm.searchNotes = function(){
-  
+
     objectToSearch = {
       champs: [],
       lane: vm.laneSearch,
