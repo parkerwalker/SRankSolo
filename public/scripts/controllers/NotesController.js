@@ -4,7 +4,7 @@ app.controller('NotesController', function(LoginService, NotesService) {
   vm.allChampionsArray = [];
   vm.searchInputs = [];
   vm.loggedIn = LoginService.loggedIn;
-
+  vm.notLoggedIn = !LoginService.loggedIn;
 
   vm.recentMatchData = NotesService.recentMatchData;
   vm.laneMatchup = NotesService.laneMatchup;

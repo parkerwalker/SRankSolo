@@ -89,10 +89,9 @@ td {
 
 /*containerBar*/
 
-.angucomplete-holder {
-  /*max-width: 30%;*/
+.searchBar {
+  display: inline-block;
 }
-
 .searchBarsHolder {
   display: inline-block;
 }
