@@ -23,7 +23,7 @@ app.controller('NotesController', function(LoginService, NotesService) {
 
 
   vm.searchNotes = function(){
-    console.log(vm.selectedChampion1.originalObject.id);
+  
     objectToSearch = {
       champs: [],
       lane: vm.laneSearch,
@@ -31,10 +31,12 @@ app.controller('NotesController', function(LoginService, NotesService) {
     }
 
     objectToSearch.champs.push(vm.selectedChampion1.originalObject.id, vm.selectedChampion2.originalObject.id)
-    console.log(objectToSearch);
+
     NotesService.searchParams(objectToSearch).then(function(response){
       vm.returnNotes = response.data;
-      console.log(vm.returnNotes);
+      if (vm.returnNotes.length == 0) {
+        alert('No notes found')
+      }
     })
   };//end searchNotes
 

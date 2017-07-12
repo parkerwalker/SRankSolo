@@ -818,6 +818,12 @@ var allChampions = {
             "id": 81,
             "key": "Ezreal",
             "name": "Ezreal"
+        },
+        "Kayn": {
+            "title": "the Shadow Reaper",
+            "id": 141,
+            "key": "Kayn",
+            "name": "Kayn"
         }
     }
 }

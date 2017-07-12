@@ -28,15 +28,15 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     vm.laneMatchup.createdBy = LoginService.summonerName;
 
     for (var i = 0; i < vm.recentMatchData[index].specificMatchLosing.length; i++) {
-        if (vm.recentMatchData[index].specificMatchLosing[i].lane == vm.recentMatchData[index].lane){
-          vm.laneMatchup.lostLane.push(vm.recentMatchData[index].specificMatchLosing[i]);
-        }//end if
+      if (vm.recentMatchData[index].specificMatchLosing[i].lane == vm.recentMatchData[index].lane){
+        vm.laneMatchup.lostLane.push(vm.recentMatchData[index].specificMatchLosing[i]);
+      }//end if
     }//end for loop
 
     for (var i = 0; i < vm.recentMatchData[index].specificMatchWinning.length; i++) {
-        if (vm.recentMatchData[index].specificMatchWinning[i].lane == vm.recentMatchData[index].lane){
-          vm.laneMatchup.wonLane.push(vm.recentMatchData[index].specificMatchWinning[i]);
-        }//end if
+      if (vm.recentMatchData[index].specificMatchWinning[i].lane == vm.recentMatchData[index].lane){
+        vm.laneMatchup.wonLane.push(vm.recentMatchData[index].specificMatchWinning[i]);
+      }//end if
     }//end for loop
     console.log(vm.laneMatchup);
     NotesService.laneMatchup = vm.laneMatchup;
@@ -111,30 +111,35 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     }else{
 
       SearchService.searchSummoner(searchUrl).then(function(data){
-        vm.summonerSearch = data;
-        console.log(vm.summonerSearch);
+        if(data.status == 404){
+          alert('Summoner Not Found')
+        }else{
+          vm.summonerSearch = data;
+          console.log(vm.summonerSearch);
 
-        var summonerId = vm.summonerSearch.id;
-        SearchService.searchSummonerMastery(summonerId).then(function(data) {
-          for (var i = 0; i < 5; i++) {
-            vm.championMastery.push(data[i])
-          }
-          console.log(vm.championMastery);
-        });//end searchSummonerMastery call
+          var summonerId = vm.summonerSearch.id;
+          SearchService.searchSummonerMastery(summonerId).then(function(data) {
+            for (var i = 0; i < 5; i++) {
+              vm.championMastery.push(data[i])
+            }
+            console.log(vm.championMastery);
+          });//end searchSummonerMastery call
 
-        var accountId = vm.summonerSearch.accountId;
+          var accountId = vm.summonerSearch.accountId;
 
-        SearchService.searchMatch(accountId).then(function(returnData){
-          vm.recentMatchData = returnData.matches;
-          for (var i = 0; i < vm.recentMatchData.length; i++) {
-            vm.recentMatchData[i].specificMatchWinning = [];
-            vm.recentMatchData[i].specificMatchLosing = [];//this sets aside an empty array to file with specificMatchCall data
-            vm.recentMatchData[i].showDeets = false;
-            vm.recentMatchData[i].viewAddNotes = false;
-          }//end for loop
-          console.log(vm.recentMatchData);
-        });//end searchservice.searchmatch call
+          SearchService.searchMatch(accountId).then(function(returnData){
+            vm.recentMatchData = returnData.matches;
+            for (var i = 0; i < vm.recentMatchData.length; i++) {
+              vm.recentMatchData[i].specificMatchWinning = [];
+              vm.recentMatchData[i].specificMatchLosing = [];//this sets aside an empty array to file with specificMatchCall data
+              vm.recentMatchData[i].showDeets = false;
+              vm.recentMatchData[i].viewAddNotes = false;
+            }//end for loop
+            console.log(vm.recentMatchData);
+          });//end searchservice.searchmatch call
+        }//end else err
       });//end searchservice.searchSummoner call
+
     }//end else
   };//end searchinput
 

@@ -7,19 +7,17 @@ app.service('LoginService', function($http){
   console.log(ls.loggedIn, ls.summonerName);
 
   ls.registerAttempt = function(data){
-    var returnResponse = {}
+    console.log(data);
 
     ls.summonerCheckUrl = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + data.userName + '?api_key=' + key;
     return $http.get(ls.summonerCheckUrl).then(function(check){
       if (check.data.name == data.userName){
          return $http.post('/register', data).then(function(response){
-          console.log(response);
-          returnResponse = response;
-          return returnResponse;
+          return response;
         });
       }//end if that checks if summonerName is valid
       //return returnResponse;
-    })
+    });//end http get to api
 
   };//end registerAttempt
 

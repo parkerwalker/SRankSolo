@@ -86,3 +86,13 @@ td {
 .teamTwo {
   background: blue;
 }
+
+/*containerBar*/
+
+.angucomplete-holder {
+  /*max-width: 30%;*/
+}
+
+.searchBarsHolder {
+  display: inline-block;
+}

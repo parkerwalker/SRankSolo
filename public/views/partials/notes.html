@@ -1,29 +1,29 @@
 <div class="container">
   <form class="" action="" method="">
-    <div class="">
-      <angucomplete-alt id="ex1"
-      placeholder="Search Champion"
-      pause="100"
-      selected-object="nc.selectedChampion1"
-      local-data="nc.allChampionsArray"
-      search-fields="name"
-      title-field="name"
-      minlength="1"
-      input-class=""/>
+    <div class="searchBarsHolder">
+      <div class="searchBar">
+        <angucomplete-alt id="ex3"
+        placeholder="Search Champion"
+        pause="100"
+        selected-object="nc.selectedChampion1"
+        local-data="nc.allChampionsArray"
+        search-fields="name"
+        title-field="name"
+        minlength="1"
+        input-class="form-control form-control-small"/>
+      </div>
+      <div class="searchBar">
+        <angucomplete-alt id="ex3"
+        placeholder="Search Champion"
+        pause="100"
+        selected-object="nc.selectedChampion2"
+        local-data="nc.allChampionsArray"
+        search-fields="name"
+        title-field="name"
+        minlength="1"
+        input-class="form-control form-control-small"/>
+      </div>
     </div>
-
-    <div class="">
-      <angucomplete-alt id="ex1"
-      placeholder="Search Champion"
-      pause="100"
-      selected-object="nc.selectedChampion2"
-      local-data="nc.allChampionsArray"
-      search-fields="name"
-      title-field="name"
-      minlength="1"
-      input-class=""/>
-    </div>
-
 
     <select class="" name="" ng-model='nc.laneSearch'>
       <option value="TOP">Top Lane</option>

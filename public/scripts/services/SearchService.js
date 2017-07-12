@@ -14,6 +14,8 @@ app.service('SearchService', function($http){
   ss.searchSummoner = function(url){
     return $http.get(url).then(function(response){
       return response.data;
+    }, function(err){
+      return err;
     });//end searchUrl
   };//end searchGif
 

@@ -6,8 +6,8 @@ app.controller('LoginController', function(LoginService, $location){
     $location .url(path);
   };//end go function
 
-  vm.summonerName = '';
-  vm.password = '';
+  //vm.summonerName = '';
+  //vm.password = '';
   vm.loggedIn = false;
 
   vm.registerUser = function(){
@@ -15,8 +15,13 @@ app.controller('LoginController', function(LoginService, $location){
       userName: vm.summonerName,
       password: vm.password
     }
+    vm.summonerName = '';
+    vm.password = '';
      LoginService.registerAttempt(loginInfo).then(function(response){
       console.log(response);
+      if(response.data == 3){
+        alert('Summoner Name Already used');
+      }
     });//end registerAttempt
   };//end registerUser
 
@@ -25,6 +30,8 @@ app.controller('LoginController', function(LoginService, $location){
       userName: vm.summonerName,
       password: vm.password
     }
+    vm.summonerName = '';
+    vm.password = '';
     console.log('login click', loginInfo);
 
     LoginService.loginAttempt(loginInfo).then(function(response){
