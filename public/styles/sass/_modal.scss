@@ -26,6 +26,7 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin: 10px;
 }
 
 .close:hover,
@@ -57,11 +58,15 @@
 .inputNotes{
   float: right;
   float: bottom;
-  width: 50%;
-  height: 200px;
+  width: 45%;
+  height: 250px;
+  margin-right: 5px;
 }
  .input{
    width: 100%;
-   height: 100%;
+   float: bottom;
+ }
 
+ .saveBtn {
+   float:right;
  }

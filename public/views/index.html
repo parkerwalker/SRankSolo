@@ -20,24 +20,26 @@
 </head>
 <body ng-app='app'>
   <div ng-controller='MainController as mc' class="">
-    <header class='jumbotron'>
+    <header class='header'>
       <h1>League of Ledgers</h1>
-      <div class="btnHolder">
-        <button class='loginBtn' ng-click='mc.toLogin()'>Login</button>
-        <button class='notesBtn'ng-click='mc.toNotes()'>Notes</button>
+      <div class="listHolder">
+        <ul>
+          <li class='loginNav' ng-click='mc.toLogin()'>Login</li>
+          <li class='notesNav'ng-click='mc.toNotes()'>Notes</li>
+        </ul>
       </div>
-<div class="searchDiv">
-  <form class="">
-    <input class='searchInput' ng-submit='mc.summonerInput()' ng-model='mc.summonerName'
-     type="text" name="" value="" placeholder="Summoner Name">
-    <button class='searchBtn' ng-click='mc.summonerInput()' type='submit'>Search</button>
-  </form>
-</div>
+      <div class="searchDiv">
+        <form class="searchForm">
+          <input class='searchInput' ng-submit='mc.summonerInput()' ng-model='mc.summonerName'
+          type="text" name="" value="" placeholder="Summoner Name">
+          <button class='searchBtn' ng-click='mc.summonerInput()' type='submit'>Search</button>
+        </form>
+      </div>
     </header>
     <main ng-view></main ng-view>
 
 
 
-  </div>
-</body>
-</html>
+    </div>
+  </body>
+  </html>

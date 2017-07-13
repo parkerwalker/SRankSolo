@@ -11,6 +11,7 @@ app.service('LoginService', function($http){
 
     ls.summonerCheckUrl = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + data.userName + '?api_key=' + key;
     return $http.get(ls.summonerCheckUrl).then(function(check){
+      console.log(check.body);
       if (check.data.name == data.userName){
          return $http.post('/register', data).then(function(response){
           return response;

@@ -2,9 +2,78 @@
 body{
   font-family: $font;
 }
-.jumbotron{
-  padding-left: 10%;
+button{
+  border: none;
 }
+.header{
+  padding-top: 10px;
+  padding-left: 10%;
+  padding-right: 10%;
+  background-color: #66b3ff;
+  margin-top: -1.5em;
+  padding-bottom: 10px;
+}
+
+.listHolder{
+  display: block;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+.loginNav, .notesNav{
+  text-align: center;
+  margin-bottom: -1em;
+  cursor: pointer;
+  float: right;
+  float: bottom;
+  display: block;
+  width: inherit;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 8px;
+  background: $backgroundClickable;
+  text-decoration: none;
+  font-family: $font;
+
+}
+.loginNav:hover, .notesNav:hover{
+  background: #8f819e;
+}
+.searchForm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  margin: 0px;
+}
+.searchBtn {
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  height: 35px;
+  width: 80px;
+  color: $clickableColor;
+  font-size: 20px;
+  margin-left: -4px;
+  background: $backgroundClickable;
+  text-decoration: none;
+  font-family: $font;
+}
+
+.searchBtn:hover {
+  background: #8f819e;
+  text-decoration: none;
+}
+
+.searchInput{
+  font-size: 20px;
+  border: none;
+  margin: none !important;
+  height: 35px;
+}
+
 
 @import 'login';
 @import 'display';
