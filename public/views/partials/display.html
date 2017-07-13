@@ -21,6 +21,7 @@
     </div>
 
     <div class="championMastery">
+      <h3 ng-if='mc.searchSuccess'>Most Played Champions</h3>
       <div ng-repeat='champs in mc.championMastery' class="">
         <img class='' ng-src="../images/champIcons/{{champs.championId}}.png" alt="">
         <h3>{{champs.championLevel}}</h3>

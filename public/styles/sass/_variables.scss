@@ -2,3 +2,15 @@ $font: Helvetica;
 
 $clickableColor: #ffffff;
 $backgroundClickable: #343cd9;
+
+button{
+    color: $clickableColor;
+    background: #343cd9;
+    text-decoration: none;
+    font-family: $font;
+}
+
+button:hover{
+  background: #8f819e;
+  text-decoration: none;
+}
