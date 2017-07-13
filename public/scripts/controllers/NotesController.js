@@ -10,7 +10,7 @@ app.controller('NotesController', function(LoginService, NotesService) {
   vm.laneMatchup = NotesService.laneMatchup;
   vm.matchUpSearch = {};
   vm.laneSearch = '';
-  console.log(allChampions);
+  
   //this loops throught the object of objects
   for (var key in allChampions.data){
     if(!allChampions.data.hasOwnProperty(key)) continue;

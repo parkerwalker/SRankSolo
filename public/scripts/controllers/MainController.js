@@ -9,6 +9,14 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
 
   vm.loggedIn = LoginService.loggedIn;
 
+  vm.toLogin = function(){
+    vm.go('/login');
+  };//end to login
+
+  vm.toNotes = function(){
+    vm.go('/notes');
+  }
+
 
   vm.addNotes = function(index){
 
@@ -91,8 +99,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
   };//end go function
 
   vm.summonerInput = function(){
-    vm.searchSuccess = false;
-    vm.go('/display');//redirects to display page
+    vm.searchSuccess = false;//shows/hides current game button
 
     vm.summonerSearch = {};
     vm.recentMatchData = [];
@@ -115,7 +122,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     if(summonerName == null || summonerName == undefined || summonerName == ''){
       alert('No Summoner entered')
     }else{
-
+      vm.go('/display');//redirects to display page
       SearchService.searchSummoner(searchUrl).then(function(data){
         if(data.status == 404){
           alert('Summoner Not Found')

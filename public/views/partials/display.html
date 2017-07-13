@@ -9,14 +9,13 @@
       <div class="teamOne">
         <div ng-repeat='players in mc.oneCurrentGameTeam' class="">
           <p>{{players.name}}</p>
-          <p>{{players.champion}}</p>
+          <img class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt="">
         </div>
       </div>
       <div class="teamTwo">
         <div ng-repeat='players in mc.twoCurrentGameTeam' class="">
           <p>{{players.name}}</p>
-          <p>{{players.champion}}</p>
-        </div>
+          <img class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt="">        </div>
       </div>
     </div>
   </div>
@@ -36,9 +35,7 @@
       <button class='moreInfo' ng-click='mc.specificMatchCall($index)'>More Info</button>
 
       <div class="oneMatch" ng-if='match.showDeets'>
-        <div ng-if='mc.shownotes' class="">
-          <button ng-click='mc.addNotes($index)' class='addNotes' type="button" name="button">Add Notes</button>
-        </div>
+
         <div class="table-responsive won">
           <table class='table-bordered matchTable'>
             <thead>
@@ -74,15 +71,19 @@
             </tr>
           </table>
         </div>
-      </div>
-      <div ng-if='match.viewAddNotes' class="editNotes">
-        <div class="">
-          <img ng-repeat='players in mc.laneMatchup.wonLane' class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt=""><h4>vs.</h4>
-          <img ng-repeat='players in mc.laneMatchup.lostLane' class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt="">
+        <div ng-if='mc.shownotes' class="">
+          <button ng-click='mc.addNotes($index)' class='addNotes' type="button" name="button">Add Notes</button>
         </div>
-          <input ng-submit='mc.postNotes()' ng-model='mc.laneMatchup.notes' type="text" name="" value="" placeholder="Add your notes on this match up">
-          <button ng-click='mc.postNotes()' type="button" name="button">Save</button>
+        <div ng-if='match.viewAddNotes' class="editNotes">
+          <div class="notesIcons">
+            <img ng-repeat='players in mc.laneMatchup.wonLane' class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt=""><h4>vs.</h4>
+            <img ng-repeat='players in mc.laneMatchup.lostLane' class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt="">
+          </div>
+            <input ng-submit='mc.postNotes()' ng-model='mc.laneMatchup.notes' type="text" name="" value="" placeholder="Add your notes on this match up">
+            <button ng-click='mc.postNotes()' type="submit" name="button">Save</button>
+        </div>
       </div>
+
 
     </div>
   </div>

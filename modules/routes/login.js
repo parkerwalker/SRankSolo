@@ -30,7 +30,7 @@ router.post('/', function(req, res){
               res.send('match');
             }
             else{
-              res.send('pass not match')
+              res.send('10')
             }
           }
         });//end compare

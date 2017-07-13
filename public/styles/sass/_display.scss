@@ -1,0 +1,99 @@
+.btnHolder{
+  float: right;
+  padding-right: 20px;
+}
+
+.championMastery{
+  padding-left:  5%;
+  max-width: 20%;
+  float: right;
+  background: grey;
+}
+
+.container {
+  margin-left: 10%;
+}
+
+.matchIcon {
+  width: 10%;
+  float: bottom;
+  margin: 5px;
+}
+
+.matchList{
+  max-width: 80%;
+  background: lightblue;
+}
+
+.teamOne, .teamTwo{
+  max-width: 50%;
+}
+.teamTwo {
+
+}
+
+.matchTable {
+  width: 100%;
+}
+
+.champIcon {
+  height: 45px;
+}
+
+.moreInfo {
+  float: right;
+  position: relative;
+  bottom: 0;
+}
+
+.win {
+
+  height: 20%;
+}
+
+.loss {
+
+  height: 20%;
+}
+/*table start*/
+
+td {
+  padding-left: 10px;
+
+}
+
+.addNotes {
+  float: bottom;
+  float: right;
+  max-width: 10%;
+}
+
+.notesIcon {
+  max-width: 50%;
+}
+.editNotes {
+  background-color: yellow;
+  position: absolute;
+  float: bottom;
+  float: right;
+  margin-right: -30px;
+}
+
+.won{
+  background: #639fff;
+  float: right;
+  width: 50%;
+}
+
+.lost{
+  background: #ff6b70;
+  width: 50%;
+}
+
+.teamOne {
+  background: purple;
+}
+
+.teamTwo {
+  background: blue;
+}

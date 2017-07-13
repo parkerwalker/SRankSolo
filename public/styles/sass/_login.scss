@@ -1,0 +1,31 @@
+.searchBtn, .notesBtn, .loginBtn {
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 4px;
+  background: #343cd9;
+  text-decoration: none;
+  font-family: $font;
+}
+
+.searchBtn:hover, .notesBtn:hover, .loginBtn:hover {
+  background: #8f819e;
+  text-decoration: none;
+}
+.searchInput[type="text"] {
+  border: 2px solid #9494b8;
+   -webkit-box-shadow:
+     inset 0 0 8px  rgba(0,0,0,0.1),
+           0 0 16px rgba(0,0,0,0.1);
+   -moz-box-shadow:
+     inset 0 0 8px  rgba(0,0,0,0.1),
+           0 0 16px rgba(0,0,0,0.1);
+   box-shadow:
+     inset 0 0 8px  rgba(0,0,0,0.1),
+           0 0 16px rgba(0,0,0,0.1);
+   padding: 5px;
+   background: rgba(255,255,255,0.5);
+   margin: 0 0 10px 0;
+}

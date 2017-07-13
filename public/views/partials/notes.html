@@ -4,7 +4,7 @@
   </div>
 
   <div ng-if='nc.loggedIn' class="">
-    <form class="" action="" method="">
+    <form class="searchForm" action="" method="">
       <div class="searchBarsHolder">
         <div class="searchBar">
           <angucomplete-alt id="ex3"
@@ -17,6 +17,7 @@
           minlength="1"
           input-class="form-control form-control-small"/>
         </div>
+            <h2>vs</h2>
         <div class="searchBar">
           <angucomplete-alt id="ex3"
           placeholder="Search Champion"
@@ -37,7 +38,7 @@
         <option value="BOTTOM">Bottom Lane</option>
       </select>
     </form>
-    <button ng-click='nc.searchNotes()' type="button" name="button">Search</button>
+    <button ng-click='nc.searchNotes()' type="button" name="button" class='searchButton'>Search</button>
 
     <div ng-repeat='notes in nc.returnNotes' class="">
       <p>{{notes}}</p>

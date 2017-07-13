@@ -15,17 +15,24 @@
   <script src="scripts/services/NotesService.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/vendors/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/angucomplete-alt.css">
-  <link rel="stylesheet" href="/styles/master.css">
-  <title>S-Rank</title>
+  <link rel="stylesheet" href="styles/sass/main.min.css">
+  <title>League of Ledgers</title>
 </head>
 <body ng-app='app'>
   <div ng-controller='MainController as mc' class="">
     <header class='jumbotron'>
-      <h1>S-Rank</h1>
-      <input ng-model='mc.summonerName' type="text" name="" value="">
-      <button ng-click='mc.summonerInput()'>Search</button>
-      <button><a href='#!/login'>Login</a></button>
-      <button><a href='#!/notes'>Notes</a></button>
+      <h1>League of Ledgers</h1>
+      <div class="btnHolder">
+        <button class='loginBtn' ng-click='mc.toLogin()'>Login</button>
+        <button class='notesBtn'ng-click='mc.toNotes()'>Notes</button>
+      </div>
+<div class="searchDiv">
+  <form class="">
+    <input class='searchInput' ng-submit='mc.summonerInput()' ng-model='mc.summonerName'
+     type="text" name="" value="" placeholder="Summoner Name">
+    <button class='searchBtn' ng-click='mc.summonerInput()' type='submit'>Search</button>
+  </form>
+</div>
     </header>
     <main ng-view></main ng-view>
 

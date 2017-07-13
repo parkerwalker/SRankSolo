@@ -1,95 +1,25 @@
-.jumbotron{
-  padding-left: 10%;
-}
 
-.championMastery{
-  padding-left:  5%;
-  max-width: 20%;
 
-  float: right;
-  background: grey;
-}
-
-.container {
-  margin-left: 10%;
-}
-
-.matchIcon {
-  width: 10%;
-  float: bottom;
-}
-
-.matchList{
-  max-width: 80%;
-  background: lightblue;
-}
-
-.oneMatch{
+.searchDiv {
 
 }
 
-.matchTable {
-  width: 100%;
+.notesBtn, .loginBtn {
 }
 
-.champIcon {
-  height: 45px;
-}
 
-.moreInfo {
-  float: right;
-  position: relative;
-  bottom: 0;
-}
 
-.win {
 
-  height: 20%;
-}
 
-.loss {
 
-  height: 20%;
-}
-/*table start*/
-
-td {
-  padding-left: 10px;
-
-}
-
-.addNotes {
-  float: right;
-  max-width: 10%;
-}
-
-.editNotes {
-  position: absolute;
-  float: right;
-}
-
-.won{
-  background: #639fff;
-  float: right;
-  width: 45%;
-}
-
-.lost{
-  background: #ff6b70;
-  width: 45%;
-}
-
-.teamOne {
-  background: purple;
-}
-
-.teamTwo {
-  background: blue;
-}
 
 /*containerBar*/
 
-.searchBar {
+.searchButton {
+  margin: 5px;
+}
+
+.searchForm, .searchBar {
   display: inline-block;
 }
 .searchBarsHolder {
