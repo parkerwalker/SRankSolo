@@ -40,7 +40,9 @@ app.controller('LoginController', function(LoginService, $location){
       vm.loggedIn = LoginService.loggedIn;
       if(response.data === 'match'){
         vm.go('/display');
-      } else {
+      } else if (response.data == 400){
+        alert("'"+ loginInfo.userName + "'" + ' is not a vaild username')
+      }else {
         alert('Password not a match')
       }
     });

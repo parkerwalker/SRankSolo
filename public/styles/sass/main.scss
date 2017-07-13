@@ -1,8 +1,12 @@
 @import 'variables';
-
+body{
+  font-family: $font;
+}
 .jumbotron{
   padding-left: 10%;
 }
 
 @import 'login';
 @import 'display';
+@import 'notes';
+@import 'modal';

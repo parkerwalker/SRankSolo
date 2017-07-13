@@ -17,7 +17,7 @@ router.post('/', function(req, res){
       res.sendStatus(400);
     }//end error if
     else{
-      if(user !== undefined){
+      if(user !== undefined && user !== null){
         console.log('comparing', req.body.password, user.password);
         bcrypt.compare(req.body.password, user.password, function(err, isMatch){
           if(err){
@@ -37,7 +37,7 @@ router.post('/', function(req, res){
       }//end if userdefined
       else{
         console.log('no user found');
-        res.sendStatus(400);
+        res.send('400');
       }//end no user found
     }//end else user found
   });//end found one

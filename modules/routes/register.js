@@ -15,7 +15,7 @@ router.post('/', function(req, res){
     user.findOne({username: req.body.userName}, function(err, summoner){
       if(err){
         console.log('check user err', err);
-        re.sendStatus(400);
+        res.sendStatus(400);
       }//end error if
       else {
         if(summoner){
