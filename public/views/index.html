@@ -6,7 +6,7 @@
   <script src="vendors/angular-route.min.js" charset="utf-8"></script>
   <script src="vendors/angucomplete-alt.min.js" charset="utf-8"></script>
   <script src="scripts/client.js" charset="utf-8"></script>
-  <script src="scripts/championInfoFlatFile.js" charset="utf-8"></script>
+  <script src="scripts/championInfoFlatFile.js" charset="utf-8"></script> 
   <script src="scripts/controllers/MainController.js" charset="utf-8"></script>
   <script src="scripts/controllers/LoginController.js" charset="utf-8"></script>
   <script src="scripts/controllers/NotesController.js" charset="utf-8"></script>
@@ -22,18 +22,20 @@
   <div ng-controller='MainController as mc' class="fullPage">
     <header class='header'>
       <h1>League of Ledgers</h1>
-      <div class="listHolder">
-        <ul>
-          <li class='loginNav' ng-click='mc.toLogin()'>Login</li>
-          <li class='notesNav'ng-click='mc.toNotes()'>Notes</li>
-        </ul>
-      </div>
-      <div class="searchDiv">
-        <form class="searchForm">
-          <input class='searchInput' ng-submit='mc.summonerInput()' ng-model='mc.summonerName'
-          type="text" name="" value="" placeholder="Summoner Name">
-          <button class='searchBtn' ng-click='mc.summonerInput()' type='submit'>Search</button>
-        </form>
+      <div class="navHolder">
+        <div class="listHolder">
+          <ul class='nav'>
+            <li class='loginNav' ng-click='mc.toLogin()'>Login</li>
+            <li class='notesNav'ng-click='mc.toNotes()'>Notes</li>
+          </ul>
+        </div>
+        <div class="searchDiv">
+          <form class="searchForm">
+            <input class='searchInput' ng-submit='mc.summonerInput()' ng-model='mc.summonerName'
+            type="text" name="" value="" placeholder="Summoner Name">
+            <button class='searchBtn' ng-click='mc.summonerInput()' type='submit'>Search</button>
+          </form>
+        </div>
       </div>
     </header>
     <main ng-view></main ng-view>

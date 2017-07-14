@@ -23,32 +23,40 @@
     <div class="championMastery">
       <h3 ng-if='mc.searchSuccess'>Most Played Champions</h3>
       <div ng-repeat='champs in mc.championMastery' class="">
-        <img class='' ng-src="../images/champIcons/{{champs.championId}}.png" alt="">
-        <h3>{{champs.championLevel}}</h3>
+        <div ng-mouseover='champs.mastery = true' class="masteryHover" ng-mouseleave='champs.mastery = false'>
+        <img class='masteryIcon' ng-src="../images/champIcons/{{champs.championId}}.png" alt="">
+            <div ng-if='champs.mastery'>
+              <p>Mastery Points: {{champs.championPoints}}</p>
+            </div>
+        </div>
       </div>
     </div>
 
     <div class="matchList">
-      <div ng-repeat='match in mc.recentMatchData' class="">
-        <hr>
-        <h3>{{match.lane}}</h3><img class='matchIcon' ng-src="../images/champIcons/{{match.champion}}.png" alt="">
+      <div ng-repeat='match in mc.recentMatchData' class="oneMatch">
+        <h3 class='whichLane'>Lane: {{match.lane}}</h3><img class='matchIcon' ng-src="../images/champIcons/{{match.champion}}.png" alt="">
 
         <button class='moreInfo' ng-click='mc.specificMatchCall($index)'>More Info</button>
 
-        <div class="oneMatch" ng-if='match.showDeets'>
+        <div class="" ng-if='match.showDeets'>
+          <div ng-if='mc.shownotes' class="">
+            <button ng-click='mc.addNotes($index)' onclick='document.getElementById("myModal").style.display="block";' class='addNotes' type="button" name="button">Add Notes</button>
+          </div>
 
           <div class="table-responsive won">
             <table class='table-bordered matchTable'>
               <thead>
-                <td>Champ</td>
-                <td>Name</td>
-                <td>Kda</td>
-                <td>lane</td>
+                <th>Champ</th>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Kda</th>
+                <th>Lane</th>
               </thead>
 
               <tr class='win' ng-repeat='players in match.specificMatchWinning'>
                 <td><img class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt=""></td>
-                <td>{{players.summonerName}}<p>{{players.rank}}</p></td>
+                <td><img class='rankIcon' ng-src="../images/tier-icons/base-icons/{{players.rank}}.png" alt=""></td>
+                <td>{{players.summonerName}}</td>
                 <td>{{players.kills}}/{{players.deaths}}/{{players.assists}}</td>
                 <td>{{players.lane}}</td>
               </tr>
@@ -58,27 +66,25 @@
           <div class="table-responsive lost">
             <table class='table-bordered matchTable'>
               <thead>
-                <td>Champ</td>
-                <td>Name</td>
-                <td>Kda</td>
-                <td>lane</td>
+                <th>Champ</th>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Kda</th>
+                <th>Lane</th>
               </thead>
 
               <tr class='loss' ng-repeat='players in match.specificMatchLosing'>
                 <td><img class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt=""></td>
-                <td>{{players.summonerName}}<p>{{players.rank}}</p></td>
+                <td><img class='rankIcon' ng-src="../images/tier-icons/base-icons/{{players.rank}}.png" alt=""></td>
+                <td>{{players.summonerName}}</td>
                 <td>{{players.kills}}/{{players.deaths}}/{{players.assists}}</td>
                 <td>{{players.lane}}</td>
               </tr>
             </table>
           </div>
-          <div ng-if='mc.shownotes' class="">
-            <button ng-click='mc.addNotes($index)' onclick='document.getElementById("myModal").style.display="block";' class='addNotes' type="button" name="button">Add Notes</button>
-          </div>
 
           <!-- The Modal -->
           <div id="myModal" class="modal">
-
             <!-- Modal content -->
             <div class="modal-content">
               <span class="close" onclick='document.getElementById("myModal").style.display="none";'>&times;</span>

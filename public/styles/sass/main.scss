@@ -4,7 +4,7 @@ html, main, .fullPage{
 }
 body{
   font-family: $font;
-  background-color: #f0f0f5;
+  background-color: #d9dadb;
   height: 100%;
 }
 button{
@@ -22,10 +22,13 @@ button{
 
 .listHolder{
   display: block;
+}
+
+.navHolder{
 
 }
 
-ul {
+.nav {
     margin: 0;
     padding: 0;
 }
@@ -35,9 +38,8 @@ ul {
   margin-bottom: -1em;
   cursor: pointer;
   float: right;
-  float: bottom;
   display: block;
-  width: inherit;
+  width: 60px;
   color: $clickableColor;
   font-size: 18px;
   padding: 4px;
@@ -51,6 +53,7 @@ ul {
 }
 .searchDiv{
   background-color: none;
+  display: inline-block;
   width: 100%;
 }
 .searchForm{

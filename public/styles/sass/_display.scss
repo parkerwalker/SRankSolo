@@ -5,11 +5,18 @@
 }
 
 .championMastery{
-
-  padding-left:  5%;
+  text-align: center;
   max-width: 20%;
   float: right;
   background: grey;
+}
+
+.masteryIcon{
+  width: 80%;
+  padding: 10px;
+}
+.masteryIcon:hover{
+  opacity: .5;
 }
 
 .container {
@@ -24,14 +31,30 @@
 
 .matchList{
   width: 70%;
-  background: lightblue;
+  //background: #a3d0ff;
+  border-radius: 5px;
 }
 
+.oneMatch{
+  border-radius: 5px;
+  background: #a3d0ff;
+  margin: -4px;
+}
+
+.addNotes{
+  margin-top: -25px;
+  right:30%;
+  float:right;
+}
+
+.whichLane{
+  padding-left: 7px;
+}
 .teamOne, .teamTwo{
   max-width: 50%;
 }
-.teamTwo {
 
+.teamTwo {
 }
 
 .matchTable {
@@ -41,11 +64,19 @@
 .champIcon {
   height: 45px;
 }
+.rankIcon{
+  height: 45px;
+  float: left;
+  top: 50%;
+}
+.test{
+
+}
 
 .moreInfo {
-  float: right;
+  float: right bottom;
   position: relative;
-  bottom: 0;
+  bottom: 0px;
 }
 
 .win {
@@ -58,10 +89,12 @@
   height: 20%;
 }
 /*table start*/
+th{
+text-align: center;
+}
 
 td {
   padding-left: 10px;
-
 }
 
 .won{

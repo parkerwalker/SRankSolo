@@ -3,6 +3,10 @@ $font: Helvetica;
 $clickableColor: #ffffff;
 $backgroundClickable: #343cd9;
 
+input {
+  border: none;
+}
+
 button{
     color: $clickableColor;
     background: #343cd9;

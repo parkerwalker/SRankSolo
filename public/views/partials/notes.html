@@ -49,8 +49,10 @@
       <img class='selected champIcon' ng-src="../images/champIcons/{{nc.selectedChampion2.originalObject.id}}.png" alt="">
       <h3 class='selected'>{{nc.laneSearch}}</h3>
     </div>
-    <div ng-repeat='notes in nc.returnNotes' class="">
-      <p>{{notes}}</p>
+    <div class="">
+      <ul class="notesList">
+        <li ng-repeat='notes in nc.returnNotes' class='notes'>{{notes}}</li>
+      </ul>
     </div>
   </div>
 
