@@ -1,10 +1,10 @@
 .loginContainer {
-
   margin-left: 10%;
 }
 
 .loginForm {
   padding: 10px;
+  height: 100%;
 }
 
 .loginInputs {
@@ -15,4 +15,10 @@
   font-size: 17px;
   padding-left: 5px;
   padding-right: 5px;
+}
+.backgroundImage{
+  position:fixed;
+  bottom:0px;
+  left:50%;
+  height: 45%;
 }

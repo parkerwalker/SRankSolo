@@ -4,7 +4,16 @@
 
 .searchForm, .searchBar {
   display: inline-block;
+  margin: 5px;
 }
 .searchBarsHolder {
   display: inline-block;
+}
+
+.notesSearch{
+  font-size: 18px;
+  border: none;
+  margin: none !important;
+  height: 35px;
+  width: 250px;
 }

@@ -1,6 +1,11 @@
 @import 'variables';
+html, main, .fullPage{
+  height: 100%;
+}
 body{
   font-family: $font;
+  background-color: #f0f0f5;
+  height: 100%;
 }
 button{
   border: none;
@@ -58,7 +63,7 @@ ul {
   color: $clickableColor;
   font-size: 20px;
   margin-left: -4px;
-  padding: 0px;
+  padding: 1px;
   background: $backgroundClickable;
   text-decoration: none;
   font-family: $font;

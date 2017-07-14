@@ -1,4 +1,4 @@
-var key = 'RGAPI-46cc8a7c-512e-4f3b-834d-9d56ffa1b08d'
+var key = 'RGAPI-6a3f6949-caa7-4168-88ef-8d19ac5b7ea7'
 var allChampions = {
     "type": "champion",
     "version": "7.13.1",
