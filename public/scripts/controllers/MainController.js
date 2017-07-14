@@ -95,7 +95,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
   };//end initSummoner
 
   vm.go = function(path){
-    $location .url(path);
+    $location.url(path);
   };//end go function
 
   vm.summonerInput = function(){

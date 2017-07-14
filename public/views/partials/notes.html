@@ -1,10 +1,12 @@
 <div class="container">
   <div ng-if='nc.notLoggedIn' class=''>
     <h2>You Must be logged in to views notes</h2>
+    <img class='notesbackgroundImage' src="../../images/background/oriannabackground.png" alt="">
+
   </div>
 
-  <div  class=""> <!--put this back in the div ng-if='nc.loggedIn' -->
-    <form class="searchForm" action="" method="">
+  <div ng-if='nc.loggedIn' class=""> <!--put this back in the div  -->
+    <form class="notesSearchForm" action="" method="">
       <div class="searchBarsHolder">
         <div class="searchBar">
           <angucomplete-alt id="ex3"
@@ -30,16 +32,23 @@
           input-class="notesSearch form-control-small"/>
         </div>
       </div>
-
-      <select class="" name="" ng-model='nc.laneSearch'>
-        <option value="TOP">Top Lane</option>
-        <option value="JUNGLE">Jungle</option>
-        <option value="MIDDLE">Middle Lane</option>
-        <option value="BOTTOM">Bottom Lane</option>
+      <select class="dropDown" name="" ng-model='nc.laneSearch' >
+        <option class='options' value="" disabled selected>Select Lane</option>
+        <option class='options' value="TOP">Top Lane</option>
+        <option class='options' value="JUNGLE">Jungle</option>
+        <option class='options' value="MIDDLE">Middle Lane</option>
+        <option class='options' value="BOTTOM">Bottom Lane</option>
       </select>
-    </form>
-    <button ng-click='nc.searchNotes()' type="button" name="button" class='searchButton'>Search</button>
+      <button ng-click='nc.searchNotes()' type="button" name="button" class='searchButton'>Search</button>
 
+    </form>
+    <div class="matchDisplay">
+      <h2 class='selected'>{{nc.selectedChampion1.originalObject.name}}</h2>
+      <img class='selected champIcon' ng-src="../images/champIcons/{{nc.selectedChampion1.originalObject.id}}.png" alt="">
+      <h2 class='selected'>{{nc.selectedChampion2.originalObject.name}}</h2>
+      <img class='selected champIcon' ng-src="../images/champIcons/{{nc.selectedChampion2.originalObject.id}}.png" alt="">
+      <h3 class='selected'>{{nc.laneSearch}}</h3>
+    </div>
     <div ng-repeat='notes in nc.returnNotes' class="">
       <p>{{notes}}</p>
     </div>

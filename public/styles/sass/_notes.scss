@@ -2,9 +2,11 @@
   margin: 5px;
 }
 
-.searchForm, .searchBar {
+.notesSearchForm, .searchBar {
   display: inline-block;
   margin: 5px;
+  width: 100%;
+
 }
 .searchBarsHolder {
   display: inline-block;
@@ -16,4 +18,39 @@
   margin: none !important;
   height: 35px;
   width: 250px;
+}
+
+.dropDown{
+  position: relative;
+    width: 200px;
+    height: 35px;
+    padding: 10px;
+    margin: 0 auto;
+    // background: #9bc7de;
+    // color: #fff;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: none;
+}
+
+.options{
+  font-family: $font;
+}
+
+.notesbackgroundImage{
+  position:fixed;
+  bottom:0px;
+  right: 0px;
+  height: 45%;
+}
+
+.matchDisplay{
+  display: inline-block;
+  // border-style: solid;
+  width: 60%;
+}
+.selected{
+  display: inline-block;
+  margin: 12px;
 }
