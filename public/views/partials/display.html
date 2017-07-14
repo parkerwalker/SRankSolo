@@ -1,4 +1,6 @@
-
+<div ng-if='mc.loading' class="">
+  <img ng-src="../images/background/nautilusLoadingGif.png" alt="">
+</div>
 <div ng-init='mc.initSummoner()' class="container">
   <div class="SummonerInfo">
     <h2>{{mc.summonerSearch.name}}</h2>
@@ -15,7 +17,8 @@
       <div class="teamTwo">
         <div ng-repeat='players in mc.twoCurrentGameTeam' class="">
           <p>{{players.name}}</p>
-          <img class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt="">        </div>
+          <img class='champIcon' ng-src="../images/champIcons/{{players.champion}}.png" alt="">
+         </div>
         </div>
       </div>
     </div>
@@ -24,10 +27,10 @@
       <h3 ng-if='mc.searchSuccess'>Most Played Champions</h3>
       <div ng-repeat='champs in mc.championMastery' class="">
         <div ng-mouseover='champs.mastery = true' class="masteryHover" ng-mouseleave='champs.mastery = false'>
-        <img class='masteryIcon' ng-src="../images/champIcons/{{champs.championId}}.png" alt="">
-            <div ng-if='champs.mastery'>
-              <p>Mastery Points: {{champs.championPoints}}</p>
-            </div>
+          <img class='masteryIcon' ng-src="../images/champIcons/{{champs.championId}}.png" alt="">
+          <div class="masteryPointsBackground">
+            <p class='masteryPoints' ng-if='champs.mastery'>Mastery Points: {{champs.championPoints}}</p>
+          </div>
         </div>
       </div>
     </div>

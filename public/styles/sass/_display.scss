@@ -9,6 +9,7 @@
   max-width: 20%;
   float: right;
   background: grey;
+  border-radius: 5px;
 }
 
 .masteryIcon{
@@ -16,7 +17,17 @@
   padding: 10px;
 }
 .masteryIcon:hover{
-  opacity: .5;
+  // opacity: .5;
+  cursor: hidden;
+}
+
+.masteryPointsBackground{
+}
+
+.masteryPoints{
+  margin-top: -30px;
+  color: white;
+  // background-color: black;
 }
 
 .container {

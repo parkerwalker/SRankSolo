@@ -99,6 +99,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
   };//end go function
 
   vm.summonerInput = function(){
+    vm.loading = false;
     vm.searchSuccess = false;//shows/hides current game button
 
     vm.summonerSearch = {};
@@ -124,8 +125,14 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     }else{
       vm.go('/display');//redirects to display page
       SearchService.searchSummoner(searchUrl).then(function(data){
+        vm.loading = true;
+        console.log(vm.loading);
+
+
         if(data.status == 404){
           alert('Summoner Not Found')
+          vm.loading = false;
+
         }else{
           vm.summonerSearch = data;
           console.log(vm.summonerSearch);
@@ -148,8 +155,11 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
               vm.recentMatchData[i].showDeets = false;
               vm.recentMatchData[i].viewAddNotes = false;
             }//end for loop
+            vm.loading = false;
+
           });//end searchservice.searchmatch call
           vm.searchSuccess = true;
+
         }//end else err
       });//end searchservice.searchSummoner call
 
