@@ -2,6 +2,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
   var vm = this;
 
   vm.searchSuccess = false;
+  vm.shownotes = false;
   vm.summonerSearch = {};
   vm.recentMatchData = [];
   vm.championMastery = [];
@@ -114,7 +115,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     var searchUrl = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + summonerName + '?api_key=' + key;
     vm.summonerName = '';
 
-    if (summonerName == LoginService.summonerName){
+    if (summonerName !== '' &&  summonerName == LoginService.summonerName){
       vm.shownotes = true;
     }else{
       vm.shownotes = false;
@@ -156,7 +157,6 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
               vm.recentMatchData[i].viewAddNotes = false;
             }//end for loop
             vm.loading = false;
-
           });//end searchservice.searchmatch call
           vm.searchSuccess = true;
 
