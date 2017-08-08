@@ -19,7 +19,7 @@ app.use('/notes', notes)
 
 
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3050;
 
 app.listen( port, function(){
   console.log('server up on:', port);

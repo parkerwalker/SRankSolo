@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('localhost:27017/srankLogin');
+mongoose.connect(process.env.MONGODB_URI);
 
 var userSchema = new mongoose.Schema({
   username: String,

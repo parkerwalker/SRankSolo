@@ -30,7 +30,7 @@ app.controller('NotesController', function(LoginService, NotesService) {
       lane: vm.laneSearch,
       createdBy: LoginService.summonerName
     }
-
+    console.log(vm.selectedChampion1);
     objectToSearch.champs.push(vm.selectedChampion1.originalObject.id, vm.selectedChampion2.originalObject.id)
 
     NotesService.searchParams(objectToSearch).then(function(response){
