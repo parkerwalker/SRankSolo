@@ -1,4 +1,4 @@
-var key = process.env.RIOT_API;
+var key = 'RGAPI-8706afc6-afdd-4b17-b9cf-82218b70fe98';
 var allChampions = {
     "type": "champion",
     "version": "7.13.1",
