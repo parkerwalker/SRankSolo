@@ -1,9 +1,8 @@
 app.service('SearchService', function($http){
   console.log('searchservice');
   // var key = 'RGAPI-46b2829c-e5cb-4fc4-a312-399ea6326fe2';
-  var key = '';
+  var key;
  $http.get('/api').then( function(res){
-    console.log(res.data);
     key = res.data;
   });//end api key call
 
@@ -28,8 +27,12 @@ app.service('SearchService', function($http){
   };//end searchGif
 
   ss.searchSummonerMastery = function(summonerId){
-    ss.masteryUrl = 'https://na1.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/' + summonerId + '?api_key=' + key;
-    return $http.get(ss.masteryUrl).then(function(response){
+    objectToSend = {
+      id: summonerId,
+    }
+    //ss.masteryUrl = 'https://na1.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/' + summonerId + '?api_key=' + key;
+    return $http.post('/search/searchMastery', objectToSend).then(function(response){
+      console.log(response.data);
       return response.data;
     });//end http
   };//end searchSummonerMastery

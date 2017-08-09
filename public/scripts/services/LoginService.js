@@ -8,7 +8,6 @@ app.service('LoginService', function($http){
   console.log(ls.loggedIn, ls.summonerName);
 
   $http.get('/api').then( function(res){
-    console.log(res.data);
     key = res.data;
   });//end api key call
 

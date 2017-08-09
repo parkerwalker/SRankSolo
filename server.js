@@ -5,6 +5,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 var index = require('./modules/routes/index');
+var search = require('./modules/routes/search');
 var login = require('./modules/routes/login');
 var register = require('./modules/routes/register');
 var notes = require('./modules/routes/notes');
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded( { extended: true } ) );
 app.use(bodyParser.json());
 
 app.use('/', index);
+app.use('/search', search);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/notes', notes);
