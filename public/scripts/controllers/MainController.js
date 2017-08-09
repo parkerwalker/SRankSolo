@@ -16,7 +16,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
 
   vm.toNotes = function(){
     vm.go('/notes');
-  }
+  };//end tonotes
 
 
   vm.addNotes = function(index){
