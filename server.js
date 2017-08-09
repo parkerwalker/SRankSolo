@@ -1,4 +1,4 @@
-require('dotenv').config({path: '/config.env'});
+require('dotenv').config({path: './config.env'});
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -16,9 +16,7 @@ app.use(bodyParser.json());
 app.use('/', index);
 app.use('/login', login);
 app.use('/register', register);
-app.use('/notes', notes)
-
-
+app.use('/notes', notes);
 
 var port = process.env.PORT || 3050;
 
@@ -27,5 +25,6 @@ app.listen( port, function(){
 });//end listen
 
 app.get('/api', function(req, res){
-  console.log(dotenv);
-});
+  console.log(process.env.RIOT_API);
+  res.send(process.env.RIOT_API);
+});//end get api

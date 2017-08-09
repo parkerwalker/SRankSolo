@@ -1,7 +1,11 @@
 app.service('SearchService', function($http){
   console.log('searchservice');
   // var key = 'RGAPI-46b2829c-e5cb-4fc4-a312-399ea6326fe2';
-
+  $http.get('/api').then( function(res){
+    console.log(res.data);
+    key = res.data;
+  });//end api key call
+  
   ss = this;
 
   ss.currentGame = function(summonerId){
