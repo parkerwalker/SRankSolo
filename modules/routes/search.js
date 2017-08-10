@@ -4,8 +4,15 @@ var path = require( 'path' );
 var request = require('request');
 
 
+router.post('/currentGame', function(req, res){
+  console.log(req.body);
+  request('https://na1.api.riotgames.com/lol/spectator/v3/active-games/by-summoner/' + req.body.id + '?api_key=' + process.env.RIOT_API, function(error, response, body){
+    console.log(body);
+    res.send(body);
+  });//end request
+});// end currentGame
+
 router.post('/searchMastery', function(req, res){
-  // var summonerId = req
   console.log('searchMaster hit', req.body);
   request('https://na1.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/' + req.body.id + '?api_key=' + process.env.RIOT_API, function(error, response, body){
     console.log(body);
@@ -20,6 +27,14 @@ router.post('/searchSummoner', function(req, res){
     res.send(body)
   });//end request
 });//end post
+
+router.post('/searchMatch', function(req, res){
+  console.log(req.body);
+  request('https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + req.body.id + '/recent?api_key=' + process.env.RIOT_API, function(error, response, body){
+    console.log(body);
+    res.send(body)
+  });//end request
+});//end searchMatch
 
 router.post('/specificMatch', function(req, res){
   console.log(req.body);

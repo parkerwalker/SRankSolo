@@ -66,8 +66,11 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
 
   vm.currentGameCall = function(){
     var summonerId = vm.summonerSearch.id;
-    SearchService.currentGame(summonerId).then(function(data){
-      if (data.status == 404){
+    var currentObject = {
+      id: summonerId
+    }
+    SearchService.currentGame(currentObject).then(function(data){
+      if (data.status.status_code == 404){
         alert('Summoner Not In a game')
       }else{
         vm.oneCurrentGameTeam = [];
@@ -155,8 +158,10 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
           });//end searchSummonerMastery call
 
           var accountId = vm.summonerSearch.accountId;
-
-          SearchService.searchMatch(accountId).then(function(returnData){
+          var account = {
+            id: accountId
+          }
+          SearchService.searchMatch(account).then(function(returnData){
             vm.recentMatchData = returnData.matches;
             for (var i = 0; i < vm.recentMatchData.length; i++) {
               vm.recentMatchData[i].specificMatchWinning = [];
