@@ -112,12 +112,14 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     vm.recentMatchData = [];
     vm.championMastery = [];
 
-
     var summonerName = vm.summonerName;
     if(vm.summonerName == ''){
       summonerName = LoginService.summonerName;
     }
-    var searchUrl = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + summonerName + '?api_key=' + key;
+    var searchObject = {
+      summoner: summonerName
+    }
+
     vm.summonerName = '';
 
     if (summonerName !== '' &&  summonerName == LoginService.summonerName){
@@ -130,7 +132,8 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
       alert('No Summoner entered')
     }else{
       vm.go('/display');//redirects to display page
-      SearchService.searchSummoner(searchUrl).then(function(data){
+      SearchService.searchSummoner(searchObject).then(function(data){
+        console.log(data);
         vm.loading = true;
         console.log(vm.loading);
 
@@ -173,8 +176,11 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
 
   vm.specificMatchCall = function(index){
     var gameId = vm.recentMatchData[index].gameId;
-    console.log('looking for gameId', gameId);
-    SearchService.specificMatch(gameId).then(function(response){
+    var objectToSend = {
+      id: gameId
+    }
+    console.log('looking for gameId', objectToSend.id);
+    SearchService.specificMatch(objectToSend).then(function(response){
       console.log(response);
       //hides all other match data
       for (var i = 0; i < vm.recentMatchData.length; i++) {

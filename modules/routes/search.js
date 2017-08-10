@@ -13,4 +13,21 @@ router.post('/searchMastery', function(req, res){
   });//end request
 });//end searchMatch
 
+router.post('/searchSummoner', function(req, res){
+  console.log(req.body);
+  request('https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + req.body.summoner + '?api_key=' + process.env.RIOT_API, function(error, response, body){
+    console.log(body);
+    res.send(body)
+  });//end request
+});//end post
+
+router.post('/specificMatch', function(req, res){
+  console.log(req.body);
+  request('https://na1.api.riotgames.com/lol/match/v3/matches/' + req.body.id + '?api_key=' + process.env.RIOT_API, function(error, response, body){
+    console.log(body);
+    res.send(body);
+  });//end specificMatch
+
+});
+
 module.exports = router;

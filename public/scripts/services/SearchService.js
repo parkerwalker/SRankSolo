@@ -18,8 +18,8 @@ app.service('SearchService', function($http){
     });//end http
   };//end ss.currentGame
 
-  ss.searchSummoner = function(url){
-    return $http.get(url).then(function(response){
+  ss.searchSummoner = function(summoner){
+    return $http.post('/search/searchSummoner', summoner).then(function(response){
       return response.data;
     }, function(err){
       return err;
@@ -45,8 +45,9 @@ app.service('SearchService', function($http){
   };//end searchMatch
 
   ss.specificMatch = function(matchId){
-    ss.matchUrl = 'https://na1.api.riotgames.com/lol/match/v3/matches/' + matchId + '?api_key=' + key;
-    return $http.get(ss.matchUrl).then(function(response){
+  //ss.matchUrl = 'https://na1.api.riotgames.com/lol/match/v3/matches/' + matchId + '?api_key=' + key;
+    return $http.post('/search/specificMatch', matchId).then(function(response){
+      console.log(response);
       return response.data;
     });//end http
   };//end specificMatch
