@@ -28,8 +28,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     }//end end loop
 
     vm.recentMatchData[index].viewAddNotes = true;
-    console.log(vm.recentMatchData[index].viewAddNotes);
-
+    
     vm.laneMatchup.wonLane = [];
     vm.laneMatchup.lostLane = [];
     vm.laneMatchup.lane = vm.recentMatchData[index].lane;
@@ -87,7 +86,6 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
             vm.twoCurrentGameTeam.push(playerTwo);
           }//end else
         }//end loop
-        console.log(vm.oneCurrentGameTeam, vm.twoCurrentGameTeam);
       }//end err else
     });//end searchservice.currentGame
   };//end currentGameCall
@@ -96,7 +94,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     vm.summonerName = LoginService.summonerName;
     if (vm.summonerName !== ''){
       vm.summonerInput();
-    }
+    }//doesnt run on page load
 
   };//end initSummoner
 
