@@ -1,7 +1,5 @@
 app.controller('LoginController', function(LoginService, $location){
   var vm = this;
-  console.log('in LoginController');
-
   vm.go = function(path){
     $location .url(path);
   };//end go function
@@ -18,7 +16,6 @@ app.controller('LoginController', function(LoginService, $location){
     vm.summonerName = '';
     vm.password = '';
      LoginService.registerAttempt(loginInfo).then(function(response){
-      console.log(response);
       if(response.data == 3){
         alert('Summoner Name Already used');
       }
@@ -32,10 +29,8 @@ app.controller('LoginController', function(LoginService, $location){
     }
     vm.summonerName = '';
     vm.password = '';
-    console.log('login click', loginInfo);
 
     LoginService.loginAttempt(loginInfo).then(function(response){
-      console.log(response.data);
       LoginService.loggedIn = true;
       vm.loggedIn = LoginService.loggedIn;
       if(response.data === 'match'){

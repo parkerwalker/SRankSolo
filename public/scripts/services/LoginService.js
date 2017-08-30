@@ -1,18 +1,15 @@
 app.service('LoginService', function($http){
-  console.log('in LoginService');
 
   ls = this;
   ls.summonerName = '';
   ls.loggedIn = false;
   var key = '';
-  console.log(ls.loggedIn, ls.summonerName);
 
   $http.get('/api').then( function(res){
     key = res.data;
   });//end api key call
 
   ls.registerAttempt = function(data){
-    console.log(data);
 
     ls.summonerCheckUrl = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + data.userName + '?api_key=' + key;
     return $http.get(ls.summonerCheckUrl).then(function(check){
@@ -34,7 +31,6 @@ app.service('LoginService', function($http){
       data: data
     }).then(function(response){
       ls.summonerName = data.userName;
-      console.log(ls.summonerName);
       return response;
     });
   };//end loginAttempt

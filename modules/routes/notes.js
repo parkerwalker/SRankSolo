@@ -8,7 +8,6 @@ router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 
 router.post('/', function(req, res){
-  console.log('notes hit', req.body);
 
   var newNotes = {
     notes: req.body.notes,
@@ -22,17 +21,13 @@ router.post('/', function(req, res){
 });//end post
 
 router.post('/search', function(req, res){
-  console.log('get notes hit', req.body);
 
   var foundNotes = [];
 
   notesModel.find({createdBy: req.body.createdBy, lane: req.body.lane}, function(err, notesModel){
     if(err){
-      console.log('no notes found');
       res.sendStatus(400);
     }else{
-      console.log('found notes!');
-      console.log(notesModel);
       for (var i = 0; i < notesModel.length; i++) {
         for (var j = 0; j < notesModel[i].players.length; j++) {
           if (notesModel[i].players[j].champion == req.body.champs[0]) {

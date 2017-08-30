@@ -19,7 +19,6 @@ app.service('NotesService', function($http){
     for (var i = 0; i < data.wonLane.length; i++) {
       objectToSend.players.push(data.wonLane[i]);
     }
-    console.log(objectToSend);
     return $http({
       method: 'POST',
       url: '/notes',
@@ -30,13 +29,11 @@ app.service('NotesService', function($http){
   };//end post notes
 
   ns.searchParams = function(data){
-    console.log(data);
     return $http({
       method: 'POST',
       url:'/notes/search',
       data: data
     }).then(function(response){
-      console.log(response);
       return response
     })//end then
   };//end searchParams

@@ -133,25 +133,18 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     }else{
       vm.go('/display');//redirects to display page
       SearchService.searchSummoner(searchObject).then(function(data){
-        console.log(data);
         vm.loading = true;
-        console.log(vm.loading);
-
-
         if(data.status == 404){
           alert('Summoner Not Found')
           vm.loading = false;
 
         }else{
           vm.summonerSearch = data;
-          console.log(vm.summonerSearch);
-
           var summonerId = vm.summonerSearch.id;
           SearchService.searchSummonerMastery(summonerId).then(function(data) {
             for (var i = 0; i < 5; i++) {
               vm.championMastery.push(data[i])
             }
-            console.log(vm.championMastery);
           });//end searchSummonerMastery call
 
           var accountId = vm.summonerSearch.accountId;
@@ -181,9 +174,7 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
     var objectToSend = {
       id: gameId
     }
-    console.log('looking for gameId', objectToSend.id);
     SearchService.specificMatch(objectToSend).then(function(response){
-      console.log(response);
       //hides all other match data
       for (var i = 0; i < vm.recentMatchData.length; i++) {
         if(vm.recentMatchData[i].showDeets = true){
@@ -265,7 +256,5 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
       NotesService.recentMatchData = vm.recentMatchData;
     });//end searchservice.specificMatch
   };//end specificMatchCall
-
-
 
 });//end controller
