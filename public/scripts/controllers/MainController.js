@@ -1,4 +1,4 @@
-app.controller('MainController', function(SearchService, LoginService, NotesService, $location, $http){
+app.controller('MainController', function(SearchService, LoginService, NotesService, $location){
   var vm = this;
 
   vm.searchSuccess = false;
@@ -9,11 +9,6 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
   vm.laneMatchup = {};
 
   vm.loggedIn = LoginService.loggedIn;
-
-  var key;
- $http.get('/api').then( function(res){
-    key = res.data;
-  });//end api key call
 
   vm.toLogin = function(){
     vm.go('/login');
@@ -99,8 +94,10 @@ app.controller('MainController', function(SearchService, LoginService, NotesServ
 
   vm.initSummoner = function(){
     vm.summonerName = LoginService.summonerName;
+    if (vm.summonerName !== ''){
+      vm.summonerInput();
+    }
 
-    vm.summonerInput();
   };//end initSummoner
 
   vm.go = function(path){
